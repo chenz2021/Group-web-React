@@ -1,0 +1,51 @@
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'PT Sans', sans-serif;
+}
+
+.home,
+.people,
+.publicoatins,
+.opportunities
+{
+  display: flex;
+  height: 90vh;
+  align-items: left;
+  justify-content: center;
+  font-size: 3rem;
+}
+
+.people {
+  background-image: url('../public/images/img-6.jpg');
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  color: #fff;
+  font-size: 60px;
+}
+
+.opportunities {
+  background-image: url("../public/images/img-2.jpg");
+  background-position: center;
+  background-size: fill;
+  background-repeat: no-repeat;
+  color: #fff;
+  font-size: 50px;
+}
+
+.publications {
+  background-image: url('../public/images/img-4.jpg');
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  color: #fff;
+  font-size: 20px;
+}
+
+.selective-publications {
+  margin-left: 70px;
+  margin-right: 70px;
+}
