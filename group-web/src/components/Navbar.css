@@ -47,7 +47,9 @@
   }
   
   .nav-item {
-    height: 80px;
+    /* font-size: large; */
+    height: 10px;
+    margin-top: 5px;
   }
   
   .nav-links {
