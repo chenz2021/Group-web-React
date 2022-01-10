@@ -43,6 +43,8 @@ function EmployeeCardList () {
               
                   </div>
                 </Collapse>
+                <p></p>
+                <p>Contact: jboscoboinik@bnl.gov</p>
                 
               
             </div>          
@@ -57,6 +59,8 @@ function EmployeeCardList () {
             <div className="bio">
             Chen Zhou received his bachelor’s degree in Materials Science at Nanjing University, China. He is now a Ph. D. student in the group of J. Anibal Boscoboinik at Brookhaven National Laboratory. 
             His research focuses on the investigation of 2D-zeolite model using Scanning Probe Microscopy, Ambient Pressure X-Ray Photoelectron Spectroscopy and Infrared Reflection Absorption Spectroscopy.
+            <p></p>
+            <p>Contact: chen.zhou@stonybrook.edu</p> 
               </div>       
           </ul>
           <ul className='People__items'>
