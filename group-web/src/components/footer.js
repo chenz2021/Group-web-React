@@ -5,35 +5,30 @@ import { Link } from 'react-router-dom';
 
 function Footer() {
   return (
-    <div className='footer-container'>
-      {/* <section className='footer-subscription'>
-        <p className='footer-subscription-heading'>
-          Join the Adventure newsletter to receive our best vacation deals
-        </p>
-        <p className='footer-subscription-text'>
-          You can unsubscribe at any time.
-        </p>
-        <div className='input-areas'>
-          <form>
-            <input
-              className='footer-input'
-              name='email'
-              type='email'
-              placeholder='Your Email'
-            />
-            <Button_c buttonStyle='btn--outline'>Subscribe</Button_c>
-          </form>
-        </div>
-      </section> */}
+    <div className='footer-container'>  
       <div class='footer-links'>
         <div className='footer-link-wrapper'>
-
           <div class='footer-link-items'>
-            <h2>Contact Us</h2>
-            <Link to='/'>Contact</Link>
-
+            <h2>CFN@BNL</h2>
+            
+              <a target="_blank" href="https://www.bnl.gov/contact-us/">Contact</a>
+              <Link to='/'>PO Box 5000</Link>
+              <Link to='/'>Upton, NY 11973-5000</Link>
+              <Link to='/'>(631) 344-8000</Link>
+            </div>
           </div>
-        </div>
+          <div className='footer-link-wrapper'>
+          <div class='footer-link-items'>
+            <h2>Facilities</h2>
+            
+              <a target="_blank" href="https://www.bnl.gov/cfn/facilities/optics.php">Optical Spectroscopy</a>
+              <a target="_blank" href="https://www.bnl.gov/cfn/facilities/probes.php">UV & X-Ray Probes</a>
+              <a target="_blank" href="https://www.bnl.gov/cfn/facilities/microscopy.php">Electron Microscopy</a>
+              <a target="_blank" href="https://www.bnl.gov/cfn/facilities/nanofabrication.php">Nanofabrication</a>
+              <a target="_blank" href="https://www.bnl.gov/cfn/facilities/theory.php/">Theory & Computation</a>
+            </div>
+          </div>
+
         <div className='footer-link-wrapper'>
           <div class='footer-link-items'>
             <h2>Videos</h2>
@@ -41,39 +36,41 @@ function Footer() {
 
           </div>
           <div class='footer-link-items'>
-            <h2>Social Media</h2>
+            <h2>Follow us!</h2>
             {/* <Link to='/'>Facebook</Link> */}
             <Link to='/'>Youtube</Link>
             <Link to='/'>Twitter</Link>
           </div>
         </div>
       </div>
+
       <section class='social-media'>
         <div class='social-media-wrap'>
           <div class='footer-logo'>
             <Link to='/' className='social-logo'>
-              CFN
-              <i class='fab fa-typo3' />
+              CFN@BNL
+                
             </Link>
+            
           </div>
           {/* <small class='website-rights'>TRVL © 2020</small> */}
           <div class='social-icons'>
-            {/* <Link
+            <Link
               class='social-icon-link facebook'
               to='/'
               target='_blank'
               aria-label='Facebook'
             >
               <i class='fab fa-facebook-f' />
-            </Link> */}
-            {/* <Link
+            </Link>
+             <Link
               class='social-icon-link instagram'
               to='/'
               target='_blank'
               aria-label='Instagram'
             >
               <i class='fab fa-instagram' />
-            </Link> */}
+            </Link>
             <Link
               class='social-icon-link youtube'
               to='/'
@@ -90,14 +87,14 @@ function Footer() {
             >
               <i class='fab fa-twitter' />
             </Link>
-            {/* <Link
+            <Link
               class='social-icon-link twitter'
               to='/'
               target='_blank'
               aria-label='LinkedIn'
             >
               <i class='fab fa-linkedin' />
-            </Link> */}
+            </Link>
           </div>
         </div>
       </section>

@@ -7,6 +7,19 @@
     align-items: center;
   }
   
+
+  a:link {
+    color: blue;
+  }
+  
+  a:visited {
+    color: purple;
+  }
+  
+  a:focus, a:hover {
+    border-bottom: 2px solid;
+  }
+
   .footer-subscription {
     display: flex;
     flex-direction: column;
