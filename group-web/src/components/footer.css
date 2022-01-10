@@ -12,9 +12,9 @@
     color: blue;
   }
   
-  a:visited {
+  /* a:visited {
     color: purple;
-  }
+  } */
   
   a:focus, a:hover {
     border-bottom: 2px solid;

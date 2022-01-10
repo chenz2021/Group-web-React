@@ -36,7 +36,7 @@ function Footer() {
 
           </div>
           <div class='footer-link-items'>
-            <h2>Follow us!</h2>
+            <h2>Follow Us!</h2>
             {/* <Link to='/'>Facebook</Link> */}
             <Link to='/'>Youtube</Link>
             <Link to='/'>Twitter</Link>
@@ -57,7 +57,7 @@ function Footer() {
           <div class='social-icons'>
             <Link
               class='social-icon-link facebook'
-              to='/'
+              to={{pathname:"//www.facebook.com/BrookhavenLab/" }}
               target='_blank'
               aria-label='Facebook'
             >
@@ -65,7 +65,7 @@ function Footer() {
             </Link>
              <Link
               class='social-icon-link instagram'
-              to='/'
+              to={{ pathname:"//www.instagram.com/brookhavenlab/" }}
               target='_blank'
               aria-label='Instagram'
             >
@@ -73,7 +73,7 @@ function Footer() {
             </Link>
             <Link
               class='social-icon-link youtube'
-              to='/'
+              to={{ pathname:"//www.youtube.com/user/BrookhavenLab" }}
               target='_blank'
               aria-label='Youtube'
             >
@@ -81,7 +81,7 @@ function Footer() {
             </Link>
             <Link
               class='social-icon-link twitter'
-              to='/'
+              to={{ pathname:"//twitter.com/BrookhavenLab" }}
               target='_blank'
               aria-label='Twitter'
             >
@@ -89,7 +89,7 @@ function Footer() {
             </Link>
             <Link
               class='social-icon-link twitter'
-              to='/'
+              to={{ pathname:"//www.linkedin.com/company/brookhavenlab/" }}
               target='_blank'
               aria-label='LinkedIn'
             >
