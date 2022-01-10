@@ -13,7 +13,7 @@ function Cards() {
               src='images/Image from iOS.jpg'
               text='Home barbecue at Anibals '
               label='Life'
-              path='/people'
+              path='/'
               
             />
             <CardItem
@@ -29,7 +29,7 @@ function Cards() {
               src='images/Image from iOS (1).jpg'
               text='After a couple of beers'
               label='Life'
-              path='/services'
+              path='/'
             />
             <CardItem
               src='images/Small.jpg'
@@ -42,7 +42,7 @@ function Cards() {
               src='images/bowling.jpg'
               text='Bowling night'
               label='Life'
-              path='/sign-up'  
+              path='/'  
             />
             
           </ul>
@@ -62,10 +62,11 @@ function Cards() {
               onClick={event =>  window.location.href='https://www.bnl.gov/newsroom/news.php?a=119266'} 
             />
             <CardItem
-              src='images/img-8.jpg'
-              text='Ride through the Sahara Desert on a guided camel tour'
-              label='Adrenaline'
-              path='/sign-up'  
+              src='images/Anibal bews.jpg'
+              text='Boscoboinik unlocks structural secrets from the ‘boiling stone’'
+              label='News'
+              path='/' 
+              onClick={event =>  window.location.href='https://tbrnewsmedia.com/bnls-boscoboinik-unlocks-structural-secrets-boiling-stone/'} 
             />
             
             
