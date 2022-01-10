@@ -48,17 +48,18 @@ function Cards() {
           </ul>
           <ul className='cards__items'>
             <CardItem
-              src='images/Image from iOS (1).jpg'
-              text='After a couple of beers'
-              label='Life'
-              path='/services'
-            />
-            <CardItem
-              src='images/Small.jpg'
-              text = 'Xe trapping in silicate nanocages'
+              src='images/Nature Comm.jpg'
+              text='Immobilization of single argon atoms in nanocages of 2D zeolite'
               label='Research'
               path='/'
               onClick={event =>  window.location.href='https://onlinelibrary.wiley.com/doi/10.1002/smll.202103661'} 
+            />
+            <CardItem
+              src='images/People.jpg'
+              text = 'Nanoscience discoveries with big commercial potential'
+              label='News'
+              path='/'
+              onClick={event =>  window.location.href='https://www.bnl.gov/newsroom/news.php?a=119266'} 
             />
             <CardItem
               src='images/img-8.jpg'
