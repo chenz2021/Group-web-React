@@ -1,8 +1,15 @@
-/* .People {
+.People {
     padding: 4rem;
-    /* background: #fff; */
-   */
-  
+    /* background-image: url('../../public/images/People.jpg');
+    background-position: center;
+    background-size: fill;
+    background-repeat: no-repeat; */
+    
+    
+}
+
+
+   
   h1 {
     text-align: center;
   }

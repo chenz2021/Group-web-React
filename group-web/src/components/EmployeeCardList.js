@@ -3,6 +3,7 @@ import EmployeeCard from "./EmployeeCard";
 import { useState } from "react";
 import { Button } from 'react-bootstrap';
 import { Collapse } from 'react-bootstrap';
+import './EmployeeCard.css';
 
 function EmployeeCardList () {
 
