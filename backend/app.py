@@ -27,15 +27,6 @@ def format_datetime(value, format='medium'):
 app.jinja_env.filters['datetime'] = format_datetime
 
 
-def show_form_errors(fieldName, errorMessages):
-    return flash(
-        'Some errors on ' +
-        fieldName.replace('_', ' ') +
-        ': ' +
-        ' '.join([str(message) for message in errorMessages]),
-        'warning'
-    )
-
 
 @app.route('/')
 def index():

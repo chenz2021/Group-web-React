@@ -1,6 +1,5 @@
 import os
-from sqlalchemy import Column, String, Integer, create_engine
-from flask_sqlalchemy import SQLAlchemy
+from sqlalchemy import SQLAlchemy, Column, String, Integer, create_engine
 from flask import Flask
 import json
 DB_HOST = os.getenv('DB_HOST', '127.0.0.1:5432')
