@@ -5,7 +5,7 @@ import Footer from '../footer';
 export default function Opportunities() {
   return (
     <>
-      <h1 className='opportunities'>Opportunities</h1>;
+      <h1 className='opportunities'>Opportunities</h1>
       <Footer />;
     </> 
   ) 
