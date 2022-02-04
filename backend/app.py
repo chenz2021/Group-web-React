@@ -92,30 +92,30 @@ def delete_position():
 
 @app.route('/opportunity/search', methods=['POST'])
 def search_opportunity():
-        body = request.get_json()
-        search_term = body.get('search_term', '')
-        openings = Opportunity.query.filter\
-            (Opportunity.description.ilike\
-                ('%' + search_term + '%')).all()
-        response = {
-            'count': len(openings),
-            'data': []
-        }
-        for opening in openings:
-            response['data'].append({
-                'id': opening.id,
-                'position': opening.position,
-                'description': opening.description
-            })
-        return jsonify({
-            'success': True,
-            'response': response
+    body = request.get_json()
+    search_term = body.get('search_term', '')
+    openings = Opportunity.query.filter\
+        (Opportunity.description.ilike\
+            ('%' + search_term + '%')).all()
+    response = {
+        'count': len(openings),
+        'data': []
+    }
+    for opening in openings:
+        response['data'].append({
+            'id': opening.id,
+            'position': opening.position,
+            'description': opening.description
         })
+    return jsonify({
+        'success': True,
+        'response': response
+    })
 
 @app.route('/publications', methods=['GET'])
 def get_publications():
     selection = Publication.query.order_by(Publication.published_at).all()
-    paginated_publication = paginate_publication(selection)
+    paginated_publication = paginate_publication(request, selection)
     if len(paginated_publication) == 0:
         abort(404)
     return jsonify({
@@ -150,24 +150,47 @@ def delete_publication(id):
 @app.route("/publications", methods=["POST"])
 def add_publication():
     body = request.get_json()
-    new_question = body.get("question", None)
-    new_answer = body.get("answer", None)
-    new_difficulty = body.get("difficulty", None)
-    new_category = body.get("category", None)
+    title = body.get("title", None)
+    published_at = body.get("published_at", None)
+    publisher = body.get("publisher", None)
+    author = body.get("author", None)
+    link = body.get("link", None)
+    is_cover = body.get("is_cover", False)
 
-    # try:
-    #     question = Question(
-    #         question=new_question,
-    #         answer=new_answer,
-    #         category=new_category,
-    #         difficulty=new_difficulty)
-    #     question.insert()
-    #     return jsonify({
-    #         "success": True,
-    #         "created": question.id,
-    #     })
-    # except Exception:
-    #     abort(422)
+    try:
+        publication = Publication(
+            title=title,
+            published_at=published_at,
+            publisher=publisher,
+            author=author,
+            link=link,
+            is_cover=is_cover)
+        publication.insert()
+        return jsonify({
+            "success": True,
+            "created": publication.id,
+        })
+    except Exception:
+        abort(422)
+
+@app.route('/publications/search', methods=['POST'])
+def search_publication():
+    body = request.get_json()
+    search = body.get('searchTerm', None)
+    try:
+        selection = Publication.query.order_by(Publication.id).\
+            filter(Publication.title.ilike("%{}%".format(search))).all()
+        current_publications = paginate_publication(request, selection)
+        total_results = len(current_publications)
+        return jsonify({
+            "success": True,
+            "publications": current_publications,
+            "total_results": total_results,
+        })
+    except:
+        abort(422)
+
+    
 # ----------------------------------------------------------------------------#
 # Launch.
 # ----------------------------------------------------------------------------#
