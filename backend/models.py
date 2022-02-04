@@ -1,8 +1,7 @@
 import os
 from xmlrpc.client import DateTime
-from sqlalchemy import SQLAlchemy, Column, String, Integer, create_engine
+from sqlalchemy import SQLAlchemy, Column, String, Integer
 from flask import Flask
-import json
 from datetime import datetime
 
 DB_HOST = os.getenv('DB_HOST', '127.0.0.1:5432')
@@ -37,26 +36,10 @@ class Opportunity(db.Model):
     posted_at = Column(DateTime, nullable=False, default=datetime.utcnow)
     description = Column(String, nullable=False)
 
-
-'''
-Question
-'''
-
-
-class Question(db.Model):
-    __tablename__ = 'questions'
-
-    id = Column(Integer, primary_key=True)
-    question = Column(String)
-    answer = Column(String)
-    category = Column(String)
-    difficulty = Column(Integer)
-
-    def __init__(self, question, answer, category, difficulty):
-        self.question = question
-        self.answer = answer
-        self.category = category
-        self.difficulty = difficulty
+    def __init__(self, position, posted_at, desription):
+        self.position = position
+        self.posted_at = posted_at
+        self.desription = desription
 
     def insert(self):
         db.session.add(self)
@@ -69,32 +52,70 @@ class Question(db.Model):
         db.session.delete(self)
         db.session.commit()
 
-    def format(self):
-        return {
-            'id': self.id,
-            'question': self.question,
-            'answer': self.answer,
-            'category': self.category,
-            'difficulty': self.difficulty
-        }
-
-
 '''
-Category
+People
 '''
 
-
-class Category(db.Model):
-    __tablename__ = 'categories'
+class People(db.Model):
+    __tablename__ = 'people'
 
     id = Column(Integer, primary_key=True)
-    type = Column(String)
+    name = Column(String)
+    position = Column(String)
+    research = Column(String)
+    email = Column(Integer)
 
-    def __init__(self, type):
-        self.type = type
+    def __init__(self, name, position, research, email):
+        self.name = name
+        self.position = position
+        self.research = research
+        self.email = email
 
-    def format(self):
-        return {
-            'id': self.id,
-            'type': self.type
-        }
+    def insert(self):
+        db.session.add(self)
+        db.session.commit()
+
+    def update(self):
+        db.session.commit()
+
+    def delete(self):
+        db.session.delete(self)
+        db.session.commit()
+
+    # def format(self):
+    #     return {
+    #         'id': self.id,
+    #         'question': self.question,
+    #         'answer': self.answer,
+    #         'category': self.category,
+    #         'difficulty': self.difficulty
+    #     }
+
+
+'''
+Publication
+'''
+
+
+class Publication(db.Model):
+    __tablename__ = 'publication'
+    id = Column(Integer, primary_key=True)
+    position = Column(String)
+    posted_at = Column(DateTime, nullable=False, default=datetime.utcnow)
+    description = Column(String, nullable=False)
+
+    def __init__(self, position, posted_at, description):
+        self.position = position
+        self.posted_at = posted_at
+        self.description = description
+
+    def insert(self):
+        db.session.add(self)
+        db.session.commit()
+
+    def update(self):
+        db.session.commit()
+
+    def delete(self):
+        db.session.delete(self)
+        db.session.commit()
