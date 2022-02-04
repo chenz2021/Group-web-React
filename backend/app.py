@@ -82,18 +82,21 @@ def delete_position():
         abort(422)
 
 @app.route('/opportunity/search', methods=['POST'])
-def search_movies():
+def search_opportunity():
         body = request.get_json()
         search_term = body.get('search_term', '')
-        movies = Movie.query.filter(Movie.title.ilike('%' + search_term + '%')).all()
+        openings = Opportunity.query.filter\
+            (Opportunity.description.ilike\
+                ('%' + search_term + '%')).all()
         response = {
-            'count': len(movies),
+            'count': len(openings),
             'data': []
         }
-        for movie in movies:
+        for opening in openings:
             response['data'].append({
-                'id': movie.id,
-                'title': movie.title
+                'id': opening.id,
+                'position': opening.position,
+                'description': opening.description
             })
         return jsonify({
             'success': True,
