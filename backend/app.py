@@ -56,7 +56,8 @@ def create_position():
     if position is None or description is None:
         return 'Invalid input! Must provide position and description'
     try:
-        opportunity = Opportunity(position=position, desription=description)
+        opportunity = Opportunity(position=position, \
+            desription=description)
         opportunity.insert()
         return jsonify({
             'success': True,
@@ -65,8 +66,39 @@ def create_position():
     except Exception:
         abort(400)
 
+@app.route('/opportunity/<id>', methods = ['DELETE'])
+def delete_position():
+    opening = Opportunity.query.\
+        filter(Opportunity.id == id).one_or_none()
+    if opening is None:
+        abort(404)
+    try:
+        opening.delete()
+        return jsonify({
+            'success': True,
+            'deleted': opening.id
+        }, 200)
+    except Exception:
+        abort(422)
 
-
+@app.route('/opportunity/search', methods=['POST'])
+def search_movies():
+        body = request.get_json()
+        search_term = body.get('search_term', '')
+        movies = Movie.query.filter(Movie.title.ilike('%' + search_term + '%')).all()
+        response = {
+            'count': len(movies),
+            'data': []
+        }
+        for movie in movies:
+            response['data'].append({
+                'id': movie.id,
+                'title': movie.title
+            })
+        return jsonify({
+            'success': True,
+            'response': response
+        })
 
 # ----------------------------------------------------------------------------#
 # Launch.
