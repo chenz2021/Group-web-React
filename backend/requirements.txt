@@ -1,4 +1,4 @@
-alembic==1.7.5
+﻿alembic==1.7.5
 aniso8601==6.0.0
 astroid==2.2.5
 atomicwrites==1.4.0

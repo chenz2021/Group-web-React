@@ -1,7 +1,8 @@
 import os
 from xmlrpc.client import DateTime
-from sqlalchemy import SQLAlchemy, Column, String, Integer
+from flask_sqlalchemy import SQLAlchemy
 from flask import Flask
+from flask_migrate import Migrate
 from datetime import datetime
 
 DB_HOST = os.getenv('DB_HOST', '127.0.0.1:5432')
@@ -18,23 +19,23 @@ setup_db(app)
     binds a flask application and a SQLAlchemy service
 '''
 
-
-def setup_db(app, database_path=DB_PATH):
+def db_setup(app, database_path=DB_PATH):
     app.config["SQLALCHEMY_DATABASE_URI"] = database_path
     app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
     db.app = app
     db.init_app(app)
-    db.create_all()
+    migrate = Migrate(app, db)
+    return db
 
 '''
 Opportunities
 '''
 class Opportunity(db.Model):
     __tablename__ = 'opportunity'
-    id = Column(Integer, primary_key=True)
-    position = Column(String)
-    posted_at = Column(DateTime, nullable=False, default=datetime.utcnow)
-    description = Column(String, nullable=False)
+    id = db.Column(db.Integer, primary_key=True)
+    position = db.Column(db.String)
+    posted_at = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
+    description = db.Column(db.String, nullable=False)
 
     def __init__(self, position, posted_at, desription):
         self.position = position
@@ -59,11 +60,11 @@ People
 class People(db.Model):
     __tablename__ = 'people'
 
-    id = Column(Integer, primary_key=True)
-    name = Column(String)
-    position = Column(String)
-    research = Column(String)
-    email = Column(Integer)
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String)
+    position = db.Column(db.String)
+    research = db.Column(db.String)
+    email = db.Column(db.Integer)
 
     def __init__(self, name, position, research, email):
         self.name = name
@@ -99,10 +100,10 @@ Publication
 
 class Publication(db.Model):
     __tablename__ = 'publication'
-    id = Column(Integer, primary_key=True)
-    position = Column(String)
-    posted_at = Column(DateTime, nullable=False, default=datetime.utcnow)
-    description = Column(String, nullable=False)
+    id = db.Column(db.Integer, primary_key=True)
+    position = db.Column(db.String)
+    posted_at = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
+    description = db.Column(db.String, nullable=False)
 
     def __init__(self, position, posted_at, description):
         self.position = position
