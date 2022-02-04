@@ -9,10 +9,12 @@ from logging import Formatter, FileHandler
 import sys
 from models import db_setup, People, Publication, Opportunity
 import json
+from flask_cors import CORS
 
 app = Flask(__name__)
 moment = Moment(app)
 db = db_setup(app)
+CORS(app)
 
 
 def format_datetime(value, format='medium'):
@@ -62,11 +64,12 @@ def create_position():
     body = request.get_json()
     position = body.get('position', None)
     description = body.get('description', None)
+    posted_at = body.get('posted_at', None)
     if position is None or description is None:
         return 'Invalid input! Must provide position and description'
     try:
-        opportunity = Opportunity(position=position, \
-            desription=description)
+        opportunity = Opportunity(position=position, posted_at=posted_at, \
+            description=description)
         opportunity.insert()
         return jsonify({
             'success': True,
@@ -76,7 +79,7 @@ def create_position():
         abort(400)
 
 @app.route('/opportunity/<id>', methods = ['DELETE'])
-def delete_position():
+def delete_position(id):
     opening = Opportunity.query.\
         filter(Opportunity.id == id).one_or_none()
     if opening is None:

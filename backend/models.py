@@ -6,6 +6,7 @@ from flask import Flask
 from flask_migrate import Migrate
 from datetime import datetime, date, timezone
 
+
 DB_HOST = os.getenv('DB_HOST', '127.0.0.1:5432')
 DB_USER = os.getenv('DB_USER', 'postgres')
 DB_PASSWORD = os.getenv('DB_PASSWORD', '1')
@@ -35,13 +36,13 @@ class Opportunity(db.Model):
     __tablename__ = 'opportunity'
     id = db.Column(db.Integer, primary_key=True)
     position = db.Column(db.String)
-    posted_at = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
+    posted_at = db.Column(db.DateTime, default=datetime.utcnow)
     description = db.Column(db.String, nullable=False)
 
-    def __init__(self, position, posted_at, desription):
+    def __init__(self, position, posted_at, description):
         self.position = position
         self.posted_at = posted_at
-        self.desription = desription
+        self.description = description
 
     def insert(self):
         db.session.add(self)
@@ -94,8 +95,7 @@ class Publication(db.Model):
     __tablename__ = 'publication'
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String, nullable=False)
-    published_at = db.Column(db.Date, nullable=False,\
-        default=datetime.utcnow().date())
+    published_at = db.Column(db.String, nullable=False)
     publisher = db.Column(db.String, nullable=False)
     author = db.Column(db.String, nullable=False)
     link = db.Column(db.String)

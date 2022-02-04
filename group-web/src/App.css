@@ -6,16 +6,21 @@
   font-family: 'PT Sans', sans-serif;
 }
 
+.form {
+  font-size: medium;
+}
+
 .home,
 .people,
 .publicoatins,
 .opportunities
 {
-  display: flex;
+  display: block;
   height: 90vh;
-  align-items: left;
+  align-items: center;
   justify-content: center;
   font-size: 3rem;
+  text-align: center;
 }
 
 .people {
