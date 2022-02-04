@@ -100,10 +100,12 @@ class Publication(db.Model):
     author = db.Column(db.String, nullable=False)
     is_cover = db.Column(db.Boolean, nullable=True, default=False)
 
-    def __init__(self, position, posted_at, description):
-        self.position = position
-        self.posted_at = posted_at
-        self.description = description
+    def __init__(self, title, published_at, publisher, author, is_cover):
+        self.title = title
+        self.published_at = published_at
+        self.publisher = publisher
+        self.author = author
+        self.is_cover = is_cover
 
     def insert(self):
         db.session.add(self)
