@@ -1,4 +1,5 @@
 import os
+from unittest.mock import NonCallableMagicMock
 import dateutil.parser
 import babel
 from flask import Flask, render_template, request, Response, flash, redirect, url_for, abort, jsonify
@@ -113,8 +114,60 @@ def search_opportunity():
 
 @app.route('/publications', methods=['GET'])
 def get_publications():
-    selection = Publication.query.order_by()
+    selection = Publication.query.order_by(Publication.published_at).all()
+    paginated_publication = paginate_publication(selection)
+    if len(paginated_publication) == 0:
+        abort(404)
+    return jsonify({
+        'success': True,
+        'publications': paginated_publication
+    })
 
+@app.route("/publications/<id>", methods=['DELETE'])
+def delete_publication(id):
+    try:
+        publication = Publication.query.filte\
+            (Publication.id == id).one_or_none()
+        
+        if publication is None:
+            abort(404)
+        publication.delete()
+        selection = Publication.query.order_by\
+            (Publication.published_at).all()
+        paginated_publication = paginate_publication(selection)
+        if len(paginated_publication) == 0:
+            abort(404)
+        return jsonify({
+            'success': True,
+            'publications': paginated_publication
+        })
+    except Exception as e:
+        if '404' in str(e):
+            abort(404)
+        else:
+            abort(422)
+
+@app.route("/publications", methods=["POST"])
+def add_publication():
+    body = request.get_json()
+    new_question = body.get("question", None)
+    new_answer = body.get("answer", None)
+    new_difficulty = body.get("difficulty", None)
+    new_category = body.get("category", None)
+
+    # try:
+    #     question = Question(
+    #         question=new_question,
+    #         answer=new_answer,
+    #         category=new_category,
+    #         difficulty=new_difficulty)
+    #     question.insert()
+    #     return jsonify({
+    #         "success": True,
+    #         "created": question.id,
+    #     })
+    # except Exception:
+    #     abort(422)
 # ----------------------------------------------------------------------------#
 # Launch.
 # ----------------------------------------------------------------------------#

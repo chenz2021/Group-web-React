@@ -98,13 +98,15 @@ class Publication(db.Model):
         default=datetime.utcnow().date())
     publisher = db.Column(db.String, nullable=False)
     author = db.Column(db.String, nullable=False)
+    link = db.Column(db.String)
     is_cover = db.Column(db.Boolean, nullable=True, default=False)
 
-    def __init__(self, title, published_at, publisher, author, is_cover):
+    def __init__(self, title, published_at, publisher, author, link, is_cover):
         self.title = title
         self.published_at = published_at
         self.publisher = publisher
         self.author = author
+        self.link = link
         self.is_cover = is_cover
 
     def insert(self):
