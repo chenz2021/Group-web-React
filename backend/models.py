@@ -1,7 +1,10 @@
 import os
+from xmlrpc.client import DateTime
 from sqlalchemy import SQLAlchemy, Column, String, Integer, create_engine
 from flask import Flask
 import json
+from datetime import datetime
+
 DB_HOST = os.getenv('DB_HOST', '127.0.0.1:5432')
 DB_USER = os.getenv('DB_USER', 'postgres')
 DB_PASSWORD = os.getenv('DB_PASSWORD', '1')
@@ -30,8 +33,9 @@ Opportunities
 class Opportunity(db.Model):
     __tablename__ = 'opportunity'
     id = Column(Integer, primary_key=True)
-    question = Column(String)
-    answer = Column(String)
+    position = Column(String)
+    posted_at = Column(DateTime, nullable=False, default=datetime.utcnow)
+    description = Column(String, nullable=False)
 
 
 '''
