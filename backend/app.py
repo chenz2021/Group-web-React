@@ -1,13 +1,13 @@
 import os
 import dateutil.parser
 import babel
-from flask import Flask, render_template, request, Response, flash, redirect, url_for, abort
+from flask import Flask, render_template, request, Response, flash, redirect, url_for, abort, jsonify
 from flask_moment import Moment
 import logging
 from logging import Formatter, FileHandler
 import sys
 from models import db_setup, People, Publication, Opportunity
-
+import json
 
 app = Flask(__name__)
 moment = Moment(app)
@@ -31,9 +31,40 @@ app.jinja_env.filters['datetime'] = format_datetime
 def index():
     return 'Hello'
 
+@app.route('/opportunity', methods = ['GET'])
+def get_position():
+    openings = Opportunity.query.order_by(Opportunity.id).all()
+    data = []
+    for opening in openings:
+        temp_data = {
+            'id': opening.id,
+            'position': opening.position,
+            'description': opening.description,
+            'posted_at': opening.posted_at
+        }
+        data.append(temp_data)
+    return jsonify({
+        'success': True,
+        'Opportunity': data
+    })
+
 @app.route('/opportunity', methods = ['POST'])
 def create_position():
-    
+    body = request.get_json()
+    position = body.get('position', None)
+    description = body.get('description', None)
+    if position is None or description is None:
+        return 'Invalid input! Must provide position and description'
+    try:
+        opportunity = Opportunity(position=position, desription=description)
+        opportunity.insert()
+        return jsonify({
+            'success': True,
+            'added': opportunity.id
+        })
+    except Exception:
+        abort(400)
+
 
 
 
