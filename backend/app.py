@@ -22,10 +22,18 @@ def format_datetime(value, format='medium'):
         format = "EE MM, dd, y h:mma"
     return babel.dates.format_datetime(date, format, locale='en')
 
-
 app.jinja_env.filters['datetime'] = format_datetime
 
+Publication_per_page = 10
 
+# paginate publications helper function
+def paginate_publication(request, selection):
+    page = request.args.get("page", 1, type=int)
+    start = (page - 1) * Publication_per_page
+    end = start + Publication_per_page
+    publications = [publication for publication in selection]
+    current_publications = publications[start:end]
+    return current_publications
 
 @app.route('/')
 def index():
@@ -102,6 +110,10 @@ def search_opportunity():
             'success': True,
             'response': response
         })
+
+@app.route('/publications', methods=['GET'])
+def get_publications():
+    selection = Publication.query.order_by()
 
 # ----------------------------------------------------------------------------#
 # Launch.

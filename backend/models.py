@@ -1,9 +1,10 @@
+from email.policy import default
 import os
 from xmlrpc.client import DateTime
 from flask_sqlalchemy import SQLAlchemy
 from flask import Flask
 from flask_migrate import Migrate
-from datetime import datetime
+from datetime import datetime, date, timezone
 
 DB_HOST = os.getenv('DB_HOST', '127.0.0.1:5432')
 DB_USER = os.getenv('DB_USER', 'postgres')
@@ -83,15 +84,6 @@ class People(db.Model):
         db.session.delete(self)
         db.session.commit()
 
-    # def format(self):
-    #     return {
-    #         'id': self.id,
-    #         'question': self.question,
-    #         'answer': self.answer,
-    #         'category': self.category,
-    #         'difficulty': self.difficulty
-    #     }
-
 
 '''
 Publication
@@ -101,9 +93,12 @@ Publication
 class Publication(db.Model):
     __tablename__ = 'publication'
     id = db.Column(db.Integer, primary_key=True)
-    position = db.Column(db.String)
-    posted_at = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
-    description = db.Column(db.String, nullable=False)
+    title = db.Column(db.String, nullable=False)
+    published_at = db.Column(db.Date, nullable=False,\
+        default=datetime.utcnow().date())
+    publisher = db.Column(db.String, nullable=False)
+    author = db.Column(db.String, nullable=False)
+    is_cover = db.Column(db.Boolean, nullable=True, default=False)
 
     def __init__(self, position, posted_at, description):
         self.position = position
