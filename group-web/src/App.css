@@ -6,7 +6,9 @@
   font-family: 'PT Sans', sans-serif;
 }
 
-.form {
+.form,
+.listView
+{
   font-size: medium;
 }
 
@@ -39,6 +41,11 @@
   background-repeat: no-repeat;
   color: #fff;
   font-size: 50px;
+}
+
+.position_view {
+  font-size: medium;
+  text-align: center;
 }
 
 .publications {

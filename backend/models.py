@@ -35,12 +35,12 @@ Opportunities
 class Opportunity(db.Model):
     __tablename__ = 'opportunity'
     id = db.Column(db.Integer, primary_key=True)
-    position = db.Column(db.String)
+    title = db.Column(db.String)
     posted_at = db.Column(db.DateTime, default=datetime.utcnow)
     description = db.Column(db.String, nullable=False)
 
-    def __init__(self, position, posted_at, description):
-        self.position = position
+    def __init__(self, title, posted_at, description):
+        self.title = title
         self.posted_at = posted_at
         self.description = description
 

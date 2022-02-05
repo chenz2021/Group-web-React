@@ -42,14 +42,14 @@ def paginate_publication(request, selection):
 def index():
     return 'Hello'
 
-@app.route('/opportunity', methods = ['GET'])
+@app.route('/opportunities', methods = ['GET'])
 def get_position():
     openings = Opportunity.query.order_by(Opportunity.id).all()
     data = []
     for opening in openings:
         temp_data = {
             'id': opening.id,
-            'position': opening.position,
+            'title': opening.title,
             'description': opening.description,
             'posted_at': opening.posted_at
         }
@@ -59,16 +59,16 @@ def get_position():
         'Opportunity': data
     })
 
-@app.route('/opportunity', methods = ['POST'])
+@app.route('/opportunities', methods = ['POST'])
 def create_position():
     body = request.get_json()
-    position = body.get('position', None)
+    title = body.get('title', None)
     description = body.get('description', None)
     posted_at = body.get('posted_at', None)
-    if position is None or description is None:
-        return 'Invalid input! Must provide position and description'
+    if title is None or description is None:
+        return 'Invalid input! Must provide title and description'
     try:
-        opportunity = Opportunity(position=position, posted_at=posted_at, \
+        opportunity = Opportunity(title=title, posted_at=posted_at, \
             description=description)
         opportunity.insert()
         return jsonify({
@@ -78,7 +78,7 @@ def create_position():
     except Exception:
         abort(400)
 
-@app.route('/opportunity/<id>', methods = ['DELETE'])
+@app.route('/opportunities/<id>', methods = ['DELETE'])
 def delete_position(id):
     opening = Opportunity.query.\
         filter(Opportunity.id == id).one_or_none()
@@ -93,7 +93,7 @@ def delete_position(id):
     except Exception:
         abort(422)
 
-@app.route('/opportunity/search', methods=['POST'])
+@app.route('/opportunities/search', methods=['POST'])
 def search_opportunity():
     body = request.get_json()
     search_term = body.get('search_term', '')
@@ -107,7 +107,7 @@ def search_opportunity():
     for opening in openings:
         response['data'].append({
             'id': opening.id,
-            'position': opening.position,
+            'title': opening.title,
             'description': opening.description
         })
     return jsonify({

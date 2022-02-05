@@ -1,75 +1,40 @@
-import axios from 'axios';
-import {format} from 'date-fns';
-import React, {useEffect, useState} from 'react';
-import '../../App.css';
-import Footer from '../footer';
-import { Button_c } from '../Button';
+import React, { useEffect, useState } from "react";
+import "../../App.css";
+import Footer from "../footer";
+import { Positions } from "./Positions";
+import { PositionForm } from "./PositionForm";
+import { Container } from "semantic-ui-react"
 
-const baseUrl = 'http://127.0.0.1:5000'
-
-export default function Opportunities() {
-  const [description, setDescription] = useState('')
-  const [positionsList, setPositionsList] = useState([]);
-
-  const fetchPosition = async () => {
-    const data = await axios.get(`${baseUrl}/opportunity`)
-    const [positions] = data.data
-    setPositionsList(positions)
-  }
-
-  const handleChange = e => {
-    setDescription(e.target.value)
-  }
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      const data = await axios.post(`{baseUrl}/opportunity`, {description})
-      setPositionsList([...positionsList, data.data]);
-      setDescription('');
-    } catch (error) {
-      
-    }
-  }
+function Opportunities() {
+  const [positions, setPositions] = useState([]);
 
   useEffect(() => {
-    fetchPosition();
-  }, [])
+    fetch("http://localhost:5000/opportunities").then(response =>
+      response.json().then(data => {
+        setPositions(data.Opportunity);
+      })
+    );
+  }, []);
 
   return (
     <>
-      <div className='opportunities'>
-        <div>
-          <header>Opportunities</header>
-        </div>
+      <div className="opportunities">
+        <h2>Opportunities</h2>
         
-        <div className='form'>
-          <form onSubmit={handleSubmit}>
-            <label htmlFor='description'>Add New Position</label>
-            <input
-              onChange={handleChange}
-              type='text'
-              name='description'
-              id='description'
-              value={description}
-            />
-            <button type='submit'>Submit</button>
-          </form>
-        </div>
-        <section>
-          <ul>
-            {positionsList.map(position => {
-              return (<li key={position.id}>
-                {position.description}</li>)
-
-            })}
-          </ul>
-        </section>
-          
-        
+      <PositionForm
+        onNewPosition={position =>
+          setPositions(currentPositions => [position, ...currentPositions])
+        }
+      />
+      <div>
+        <Positions positions={positions} />
       </div>
       
-      <Footer />;
-    </> 
-  ) 
+    </div>
+    <Footer />
+    </>
+    
+  );
 }
+
+export default Opportunities;
