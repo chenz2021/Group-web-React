@@ -1,10 +1,50 @@
 import React, { useState } from "react";
-import { Form, Input, Button, TextArea } from "semantic-ui-react";
+import { Form, Input, Button } from "semantic-ui-react";
+import { confirmAlert } from 'react-confirm-alert';
+import 'react-confirm-alert/src/react-confirm-alert.css'; // Import css
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { faCheckSquare } from "@fortawesome/free-solid-svg-icons";
+
+library.add(faCheckSquare);
 
 export const PositionForm = ({ onNewPosition }) => {
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
-  
+
+    function handleSubmit() {
+      confirmAlert({
+        title: 'Submit your post',
+        message: 'Are you sure?',
+        buttons: [
+          {
+            label: 'Yes, submit',
+            onClick: async () => {
+                const position = { title, description };
+                const response = await fetch("http://localhost:5000/opportunities", {
+                  method: "POST",
+                  headers: {
+                    "Content-Type": "application/json"
+                  },
+                  body: JSON.stringify(position)
+                });
+    
+                if (response.ok) {
+                  console.log("response worked!");
+                  onNewPosition(position);
+                  setTitle("");
+                  setDescription("");
+                }
+            }
+          },
+          {
+            label: 'Cancel',
+            // onClick: () => alert('cancelled')
+          }
+        ]
+      });
+    }
+
     return (
         <Form >
           <Form.Field>
@@ -22,28 +62,13 @@ export const PositionForm = ({ onNewPosition }) => {
             />
           </Form.Field>
           <Form.Field>
+            
             <Button
-              onClick={async () => {
-                const position = { title, description };
-                const response = await fetch("http://localhost:5000/opportunities", {
-                  method: "POST",
-                  headers: {
-                    "Content-Type": "application/json"
-                  },
-                  body: JSON.stringify(position)
-                });
-    
-                if (response.ok) {
-                  console.log("response worked!");
-                  onNewPosition(position);
-                  setTitle("");
-                  setDescription("");
-                }
-              }}
+              onClick={handleSubmit}
             >
               submit
             </Button>
           </Form.Field>
         </Form>
       );
-    };
+    }

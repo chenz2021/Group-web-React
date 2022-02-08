@@ -2,6 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { Button_c } from './Button';
 import { Link } from 'react-router-dom';
 import './Navbar.css';
+import AuthenticationButton from './authentication-button';
+import Login from './Login';
+import Logout from './Logout';
 
 function Navbar() {
   const [click, setClick] = useState(false);
@@ -32,6 +35,13 @@ function Navbar() {
             CFN
             <i class="fas fa-rocket" />
           </Link>
+          {/* <div clessname="login" style={{ marginBottom: 10, marginLeft: 20 }}>
+          <Login />
+          </div> 
+          <div clessname="logout" style={{ marginBottom: 10 }}>
+          <Logout />
+          </div>  */}
+          
           <div className='menu-icon' onClick={handleClick}>
             <i className={click ? 'fas fa-times' : 'fas fa-bars'} />
           </div>
@@ -68,19 +78,8 @@ function Navbar() {
                 Opportunities
               </Link>
             </li>
-            <li>
-              <Link
-                to='/contact'
-                className='nav-links-mobile'
-                onClick={closeMobileMenu}
-              >
-                Contact Us!
-              </Link>
-              
-            </li>
           </ul>
-          {button && <Button_c buttonStyle='btn--outline'>Contact Us!</Button_c>}
-          
+          <AuthenticationButton/>
         </div>
       </nav>
     </>

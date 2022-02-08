@@ -49,11 +49,9 @@ function Footer() {
           <div class='footer-logo'>
             <Link to='/' className='social-logo'>
               CFN@BNL
-                
             </Link>
             
           </div>
-          {/* <small class='website-rights'>TRVL © 2020</small> */}
           <div class='social-icons'>
             <Link
               class='social-icon-link facebook'

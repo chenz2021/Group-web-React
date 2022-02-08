@@ -34,13 +34,19 @@ def paginate_publication(request, selection):
     page = request.args.get("page", 1, type=int)
     start = (page - 1) * Publication_per_page
     end = start + Publication_per_page
-    publications = [publication for publication in selection]
+    publications = [publication.format() for publication in selection]
     current_publications = publications[start:end]
     return current_publications
 
 @app.route('/')
 def index():
     return 'Hello'
+
+@app.route('/token', methods=['POST'])
+def create_token():
+    email = request.json.get('email', None)
+    password = request.json.get('password', None)
+    
 
 @app.route('/opportunities', methods = ['GET'])
 def get_position():
@@ -117,7 +123,7 @@ def search_opportunity():
 
 @app.route('/publications', methods=['GET'])
 def get_publications():
-    selection = Publication.query.order_by(Publication.published_at).all()
+    selection = Publication.query.order_by(Publication.id).all()
     paginated_publication = paginate_publication(request, selection)
     if len(paginated_publication) == 0:
         abort(404)
@@ -129,15 +135,15 @@ def get_publications():
 @app.route("/publications/<id>", methods=['DELETE'])
 def delete_publication(id):
     try:
-        publication = Publication.query.filte\
+        publication = Publication.query.filter\
             (Publication.id == id).one_or_none()
         
         if publication is None:
             abort(404)
         publication.delete()
         selection = Publication.query.order_by\
-            (Publication.published_at).all()
-        paginated_publication = paginate_publication(selection)
+            (Publication.id).all()
+        paginated_publication = paginate_publication(request, selection)
         if len(paginated_publication) == 0:
             abort(404)
         return jsonify({
@@ -149,29 +155,25 @@ def delete_publication(id):
             abort(404)
         else:
             abort(422)
+    
 
-@app.route("/publications", methods=["POST"])
+@app.route('/publications', methods=['POST'])
 def add_publication():
     body = request.get_json()
-    title = body.get("title", None)
-    published_at = body.get("published_at", None)
-    publisher = body.get("publisher", None)
-    author = body.get("author", None)
-    link = body.get("link", None)
-    is_cover = body.get("is_cover", False)
+    title = body.get('title', '')
+    year = body.get('year', '')
+    publisher = body.get('publisher', '')
+    author = body.get("author", '')
+    link = body.get("link", '')
+    cover = body.get("cover", '')
 
     try:
-        publication = Publication(
-            title=title,
-            published_at=published_at,
-            publisher=publisher,
-            author=author,
-            link=link,
-            is_cover=is_cover)
+        publication = Publication(title=title,year=year, \
+            publisher=publisher, author=author, link=link, cover=cover)
         publication.insert()
         return jsonify({
             "success": True,
-            "created": publication.id,
+            "created": publication.id
         })
     except Exception:
         abort(422)

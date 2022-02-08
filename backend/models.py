@@ -94,20 +94,20 @@ Publication
 class Publication(db.Model):
     __tablename__ = 'publication'
     id = db.Column(db.Integer, primary_key=True)
-    title = db.Column(db.String, nullable=False)
-    published_at = db.Column(db.String, nullable=False)
-    publisher = db.Column(db.String, nullable=False)
-    author = db.Column(db.String, nullable=False)
+    title = db.Column(db.String)
+    year = db.Column(db.String)
+    publisher = db.Column(db.String)
+    author = db.Column(db.String)
     link = db.Column(db.String)
-    is_cover = db.Column(db.Boolean, nullable=True, default=False)
+    cover = db.Column(db.String)
 
-    def __init__(self, title, published_at, publisher, author, link, is_cover):
+    def __init__(self, title, year, publisher, author, link, cover):
         self.title = title
-        self.published_at = published_at
+        self.year = year
         self.publisher = publisher
         self.author = author
         self.link = link
-        self.is_cover = is_cover
+        self.cover = cover
 
     def insert(self):
         db.session.add(self)
@@ -119,3 +119,14 @@ class Publication(db.Model):
     def delete(self):
         db.session.delete(self)
         db.session.commit()
+    
+    def format(self):
+        return {
+            'id': self.id,
+            'title': self.title,
+            'author': self.author,
+            'year': self.year,
+            'publisher': self.publisher,
+            'link': self.link,
+            'cover': self.cover
+        }

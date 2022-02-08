@@ -10,10 +10,12 @@ function HeroSection() {
       <h1>Welcome to Anibal's group</h1>
       
       <div className='hero-btns'>
+      
         <Button_c
           className='btns'
           Button_Style='btn--outline'
           Button_Size='btn--large'
+          onClick={event =>  window.location.href='/opportunities'}
         >
           See Open Positions
         </Button_c>
@@ -21,7 +23,6 @@ function HeroSection() {
           className='btns'
           buttonStyle='btn--primary'
           buttonSize='btn--large'
-          onClick={console.log('hey')}
         >
           Check Out Our Youtube Channel<i className='far fa-play-circle' />
         </Button_c>

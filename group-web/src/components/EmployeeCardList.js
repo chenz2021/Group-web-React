@@ -1,13 +1,11 @@
 import React from "react";
 import EmployeeCard from "./EmployeeCard";
 import { useState } from "react";
-import { Button } from 'react-bootstrap';
-import { Collapse } from 'react-bootstrap';
 import './EmployeeCard.css';
+import { ReadMore } from "./readMore";
 
 function EmployeeCardList () {
-
-  const [open, setOpen] = useState(false);
+  const bio = "My research activities focus on the synthesis and study of thin or two-dimensional (2D) porous materials to use them as simplified systems (model systems) for bulk structures such as heterogeneous catalysts, membranes, adsorbents, etc. For these studies, we use conditions ranging from ultra-high vacuum to industrially relevant pressures, taking advantage of surface science techniques that can operate at this pressure range. Catalysts of particular interest are microporous materials such as zeolites. Although most heterogeneous catalysts used in the industry fall in this category, they are particularly challenging to study with surface science techniques. The problem resides in the fact that the catalytically active surface is enclosed within the pores, and thus out of the reach of surface science tools, which require an “exposed” surface. A useful approach to overcome this difficulty is to create 2D analog materials that have the same active sites as the three-dimensional porous ones. In this way, the active site can be probed with typical surface science tools. Resulting from initial studies on these 2D-silicates materials, it was evident that confinement effects play an essential role in chemical reactions and physical trapping of species. We are now exploring these materials for trapping and separating noble gases, in addition to studying catalytic reactions."
 
     return (
     <div className='People'>
@@ -23,8 +21,10 @@ function EmployeeCardList () {
               onClick={event =>  window.location.href='https://www.bnl.gov/staff/jboscoboinik'}              
             />
             <div className="bio">
+              <ReadMore children={bio}/>
+
               
-                My research activities focus on the synthesis and study of thin or two-dimensional (2D) porous materials to use them as simplified systems (model systems) for bulk structures such as heterogeneous catalysts, membranes, adsorbents, etc. 
+                {/* My research activities focus on the synthesis and study of thin or two-dimensional (2D) porous materials to use them as simplified systems (model systems) for bulk structures such as heterogeneous catalysts, membranes, adsorbents, etc. 
               For these studies, we use conditions ranging from ultra-high vacuum to industrially relevant pressures, taking advantage of surface science techniques that can operate at this pressure range. Catalysts of particular interest are microporous materials such as zeolites. 
 
                
@@ -43,7 +43,7 @@ function EmployeeCardList () {
                   Resulting from initial studies on these 2D-silicates materials, it was evident that confinement effects play an essential role in chemical reactions and physical trapping of species. We are now exploring these materials for trapping and separating noble gases, in addition to studying catalytic reactions.
               
                   </div>
-                </Collapse>
+                </Collapse> */}
                 <p></p>
                 <p>Contact: jboscoboinik@bnl.gov</p>
                 

@@ -3,7 +3,6 @@ import "../../App.css";
 import Footer from "../footer";
 import { Positions } from "./Positions";
 import { PositionForm } from "./PositionForm";
-import { Container } from "semantic-ui-react"
 
 function Opportunities() {
   const [positions, setPositions] = useState([]);
@@ -14,26 +13,28 @@ function Opportunities() {
         setPositions(data.Opportunity);
       })
     );
-  }, []);
+  });
 
   return (
     <>
-      <div className="opportunities">
-        <h2>Opportunities</h2>
-        
-      <PositionForm
-        onNewPosition={position =>
-          setPositions(currentPositions => [position, ...currentPositions])
-        }
-      />
-      <div>
-        <Positions positions={positions} />
-      </div>
+      <div className="cards">
+        <h1>Opportunities</h1>
       
-    </div>
+        <div className='cards__container'>
+          <div className='cards__wrapper'>
+          <PositionForm
+            onNewPosition={position =>
+              setPositions(currentPositions => [...currentPositions, position])
+            }
+            />
+            <div>
+              <Positions positions={positions}/>
+            </div>
+          </div>
+        </div>
+      </div>
     <Footer />
-    </>
-    
+    </>  
   );
 }
 

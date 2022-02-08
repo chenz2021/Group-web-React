@@ -10,17 +10,18 @@ import Opportunities from './components/pages/Opportunities';
 
 
 function App() {
+  
   return (
     <>
-      <Router>
-        <Navbar />
+      
+        <Navbar />     
           <Routes>
             <Route path='/' element={<Home />} />
             <Route path='/people' element={<People />} />
             <Route path='/publications' element={<Publications />} />
             <Route path='/opportunities' element={<Opportunities />} />
           </Routes>      
-      </Router>
+      
     </>
   );
 }
