@@ -8,10 +8,7 @@ import { faDeleteLeft } from "@fortawesome/free-solid-svg-icons";
 import { confirmAlert } from 'react-confirm-alert';
 import 'react-confirm-alert/src/react-confirm-alert.css'; // Import css
 
-
 library.add(faDeleteLeft);
-
-
 
 export const Positions = ({ positions }) => {
 

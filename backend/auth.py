@@ -6,9 +6,9 @@ from urllib.request import urlopen
 import logging
 from logging import FileHandler, Formatter
 
-AUTH0_DOMAIN = 'dev-6oaiwjtk.us.auth0.com'
+AUTH0_DOMAIN = 'dev-0-47ey18.us.auth0.com'
 ALGORITHMS = ['RS256']
-API_AUDIENCE = 'show'
+API_AUDIENCE = 'group'
 
 logging.basicConfig(filename='theater_error.log', level=logging.INFO,
                     format='%(asctime)s %(levelname)s: %(message)s')

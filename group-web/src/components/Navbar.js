@@ -35,12 +35,6 @@ function Navbar() {
             CFN
             <i class="fas fa-rocket" />
           </Link>
-          {/* <div clessname="login" style={{ marginBottom: 10, marginLeft: 20 }}>
-          <Login />
-          </div> 
-          <div clessname="logout" style={{ marginBottom: 10 }}>
-          <Logout />
-          </div>  */}
           
           <div className='menu-icon' onClick={handleClick}>
             <i className={click ? 'fas fa-times' : 'fas fa-bars'} />

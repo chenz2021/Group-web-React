@@ -1,36 +1,69 @@
-
-import React from 'react';
-
+import React, { useEffect, useState } from "react";
+import { Container } from "semantic-ui-react";
+import "../../App.css";
+import Footer from "../footer";
+import { Positions } from "./Positions";
+import { PositionForm } from "./PositionForm";
+import { PublicationForm } from "./PublicationForm";
+import { PublicationList } from "./PublicationList";
 import { useAuth0, withAuthenticationRequired } from '@auth0/auth0-react';
 import Loading from '../Loading';
+
     
 const Admin = () => {
-      const { user } = useAuth0();
-      const { name, picture, email } = user;
-    
-      return (
-        <div>
-          <div className="row align-items-center profile-header">
-            <div className="col-md-2 mb-3">
-              <img
-                src={picture}
-                alt="Profile"
-                className="rounded-circle img-fluid profile-picture mb-3 mb-md-0"
-              />
+    const [positions, setPositions] = useState([]);
+    const [Publication, setPublication] = useState([]);
+
+    useEffect(() => {
+        fetch("http://localhost:5000/publications").then(response =>
+          response.json().then(data => {
+            setPublication(data.publications);
+          })
+        );
+      });
+        
+    useEffect(() => {
+    fetch("http://localhost:5000/opportunities").then(response =>
+      response.json().then(data => {
+        setPositions(data.Opportunity);
+        })
+        );
+    });
+
+    return (
+    <>
+      <div className="cards">
+        <h1>Add new publications here!</h1>
+        <Container style={{ marginLeft: 80 }}>
+            <PublicationForm
+                onNewPublication={publication =>
+                  setPublication(currentPublication => [...currentPublication, publication])
+                }
+                />
+            <Container style={{ marginLeft: 40 }}>
+              <PublicationList children={Publication}/>
+            </Container>
+        </Container>
+        <h1>Add new openings here!</h1>
+      
+        <div className='cards__container'>
+          <div className='cards__wrapper'>
+          <PositionForm
+            onNewPosition={position =>
+              setPositions(currentPositions => [...currentPositions, position])
+            }
+            />
+            <div>
+              <Positions positions={positions}/>
             </div>
-            <div className="col-md text-center text-md-left">
-              <h2>{name}</h2>
-              <p className="lead text-muted">{email}</p>
-            </div>
-          </div>
-          <div className="row">
-            <pre className="col-12 text-light bg-dark p-4">
-              {JSON.stringify(user, null, 2)}
-            </pre>
           </div>
         </div>
-      );
-    };
+      </div>
+    <Footer />
+    </>  
+  );
+}
+    
     
 export default withAuthenticationRequired(Admin, {
       onRedirecting: () => <Loading />,

@@ -1,6 +1,5 @@
 import React from 'react';
 import './footer.css';
-import { Button_c } from './Button';
 import { Link } from 'react-router-dom';
 
 function Footer() {
@@ -15,6 +14,7 @@ function Footer() {
               <Link to='/'>PO Box 5000</Link>
               <Link to='/'>Upton, NY 11973-5000</Link>
               <Link to='/'>(631) 344-8000</Link>
+              <Link to='/admin'>Admin Login</Link>
             </div>
           </div>
           <div className='footer-link-wrapper'>
