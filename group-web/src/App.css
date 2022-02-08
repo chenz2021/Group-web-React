@@ -24,6 +24,10 @@
   text-align: center;
 }
 
+.spinner {
+  align-items: center;
+}
+
 .people {
   background-image: url('../public/images/img-6.jpg');
   background-position: center;
