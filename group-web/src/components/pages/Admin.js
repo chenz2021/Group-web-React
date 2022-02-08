@@ -13,6 +13,7 @@ import Loading from '../Loading';
 const Admin = () => {
     const [positions, setPositions] = useState([]);
     const [Publication, setPublication] = useState([]);
+    
 
     useEffect(() => {
         fetch("http://localhost:5000/publications").then(response =>
@@ -23,9 +24,9 @@ const Admin = () => {
       });
         
     useEffect(() => {
-    fetch("http://localhost:5000/opportunities").then(response =>
-      response.json().then(data => {
-        setPositions(data.Opportunity);
+        fetch("http://localhost:5000/opportunities").then(response =>
+        response.json().then(data => {
+            setPositions(data.Opportunity);
         })
         );
     });
@@ -44,6 +45,7 @@ const Admin = () => {
               <PublicationList children={Publication}/>
             </Container>
         </Container>
+        
         <h1>Add new openings here!</h1>
       
         <div className='cards__container'>

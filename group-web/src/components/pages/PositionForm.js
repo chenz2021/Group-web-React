@@ -5,12 +5,14 @@ import 'react-confirm-alert/src/react-confirm-alert.css'; // Import css
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { faCheckSquare } from "@fortawesome/free-solid-svg-icons";
+import { useAuth0 } from '@auth0/auth0-react';
 
 library.add(faCheckSquare);
 
 export const PositionForm = ({ onNewPosition }) => {
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
+    const { getAccessTokenSilently } = useAuth0();
 
     function handleSubmit() {
       confirmAlert({
@@ -20,11 +22,14 @@ export const PositionForm = ({ onNewPosition }) => {
           {
             label: 'Yes, submit',
             onClick: async () => {
+                const token = await getAccessTokenSilently();
                 const position = { title, description };
+                console.log(token)
                 const response = await fetch("http://localhost:5000/opportunities", {
                   method: "POST",
                   headers: {
-                    "Content-Type": "application/json"
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${token}`
                   },
                   body: JSON.stringify(position)
                 });

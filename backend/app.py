@@ -1,3 +1,4 @@
+import imp
 import os
 from unittest.mock import NonCallableMagicMock
 import dateutil.parser
@@ -10,6 +11,7 @@ import sys
 from models import db_setup, People, Publication, Opportunity
 import json
 from flask_cors import CORS
+from auth import AuthError, requires_auth
 
 app = Flask(__name__)
 moment = Moment(app)
@@ -66,7 +68,8 @@ def get_position():
     })
 
 @app.route('/opportunities', methods = ['POST'])
-def create_position():
+@requires_auth('post:opportunities')
+def create_position(jwt):
     body = request.get_json()
     title = body.get('title', None)
     description = body.get('description', None)
@@ -85,7 +88,8 @@ def create_position():
         abort(400)
 
 @app.route('/opportunities/<id>', methods = ['DELETE'])
-def delete_position(id):
+@requires_auth('delete:opportunities')
+def delete_position(jwt, id):
     opening = Opportunity.query.\
         filter(Opportunity.id == id).one_or_none()
     if opening is None:
@@ -133,6 +137,7 @@ def get_publications():
     })
 
 @app.route("/publications/<id>", methods=['DELETE'])
+@requires_auth('delete:publications')
 def delete_publication(id):
     try:
         publication = Publication.query.filter\
@@ -158,6 +163,7 @@ def delete_publication(id):
     
 
 @app.route('/publications', methods=['POST'])
+@requires_auth('post:publications')
 def add_publication():
     body = request.get_json()
     title = body.get('title', '')

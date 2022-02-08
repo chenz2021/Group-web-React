@@ -15,7 +15,7 @@ function Publications() {
         setPublication(data.publications);
       })
     );
-  });
+  }, []);
     return (
         <>
         <Cards />
