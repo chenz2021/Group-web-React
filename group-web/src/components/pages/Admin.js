@@ -6,8 +6,9 @@ import { Positions } from "./Positions";
 import { PositionForm } from "./PositionForm";
 import { PublicationForm } from "./PublicationForm";
 import { PublicationList } from "./PublicationList";
-import { useAuth0, withAuthenticationRequired } from '@auth0/auth0-react';
+import { withAuthenticationRequired } from '@auth0/auth0-react';
 import Loading from '../Loading';
+import BackToTop from '../BackToTop';
 
     
 const Admin = () => {
@@ -32,6 +33,7 @@ const Admin = () => {
 
     return (
     <>
+    <BackToTop/>
       <div className="cards">
         <div className='cards__container'>
           <div className='cards__wrapper'>

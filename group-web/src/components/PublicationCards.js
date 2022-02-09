@@ -6,6 +6,7 @@ function Cards() {
   return (
     <div className='cards'>
       <h1>Publications</h1>
+      <h2>Research Highlights</h2>
       <div className='cards__container'>
         <div className='cards__wrapper'>
             <h2>Confined Chemistry</h2>
@@ -86,8 +87,11 @@ function Cards() {
             
             
           </ul>
+         
+
         </div>
       </div>
+      <h2>Selective Publications</h2>
     </div>
   );
 }

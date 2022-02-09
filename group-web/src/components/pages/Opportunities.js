@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { Button } from "semantic-ui-react";
 import "../../App.css";
 import Footer from "../footer";
 import ChildAccordion from "./ChildAccordion";
+import BackToTop from '../BackToTop';
 
 export default function Opportunities() {
   const [positions, setPositions] = useState([]);
@@ -35,6 +35,7 @@ export default function Opportunities() {
   
   return (
     <>
+    <BackToTop/>
       <div className="cards">  
         <h1>Opportunities</h1>
         <div className='cards__container'>

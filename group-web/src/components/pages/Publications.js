@@ -5,6 +5,7 @@ import '../../App.css';
 import Footer from '../footer';
 import Cards from '../PublicationCards';
 import ChildAccordionPublication from './ChildAccordionPublication';
+import BackToTop from '../BackToTop';
 
 
 function Publications() {
@@ -19,16 +20,18 @@ function Publications() {
   }, []);
     return (
         <>
+        <BackToTop>  
+        </BackToTop>
         <Cards />
-        <Container>
+        <Container>    
         {Publication.map(publication =>{
             return (<>
               <ChildAccordionPublication child={publication}/>
             </>)
           })}
-        </Container>
-           
           
+        </Container>
+        
         <Footer />
         </>           
       );

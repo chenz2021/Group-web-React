@@ -1,6 +1,5 @@
 
 import './App.css';
-import Navbar from './components/Navbar';
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 import React from 'react';
 import Loading from './components/Loading';
@@ -21,7 +20,7 @@ function App() {
   return (
     <>
       
-        <Navbar />     
+    
           <Routes>
             <Route path='/' element={<Home />} />
             <Route path='/people' element={<People />} />

@@ -9,7 +9,6 @@ function CardItem(props) {
           <figure className='cards__item__pic-wrap' data-category={props.label}>
             <img
               className='cards__item__img'
-              alt='Image not found'
               src={props.src}
               onClick = {props.onClick}
             />
