@@ -23,6 +23,7 @@ function HeroSection() {
           className='btns'
           buttonStyle='btn--primary'
           buttonSize='btn--large'
+          onClick={event =>  window.location.href='/publications'}
         >
           Check Out Our Youtube Channel<i className='far fa-play-circle' />
         </Button_c>
