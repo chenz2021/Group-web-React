@@ -1,6 +1,5 @@
 import React from "react";
 import EmployeeCard from "./EmployeeCard";
-import { useState } from "react";
 import './EmployeeCard.css';
 import { ReadMore } from "./readMore";
 

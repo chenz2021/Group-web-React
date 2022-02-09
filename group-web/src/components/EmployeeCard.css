@@ -1,15 +1,13 @@
   .People {
     padding: 4rem;       
 }
-
-
-   
+  
   h1 {
     text-align: center;
   }
   
   .bio {
-  /* display: flex; */
+  display: flex;
   flex-direction: column;
   width: 50%;
   text-align: justify;
@@ -17,7 +15,7 @@
 
   .read-more {
   display: flex;
-  width: 20%;
+  width: 10%;
   font-size: small;
 }
 
