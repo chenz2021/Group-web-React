@@ -15,7 +15,7 @@ export default function ChildAccordionPublication({child}) {
                     aria-controls="panel2a-content"
                     id="panel2a-header"
                 >
-                    <Typography>Publication Title: {child.title}, Year Published: {child.year}, Journal: {child.publisher}</Typography>
+                    <Typography>ID: {child.id}, Publication Title: {child.title}, Year Published: {child.year}, Journal: {child.publisher}</Typography>
                 </AccordionSummary>
                 <AccordionDetails>
                     <Typography>
