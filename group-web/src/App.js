@@ -9,7 +9,6 @@ import People from './components/pages/People';
 import Publications from './components/pages/Publications';
 import Opportunities from './components/pages/Opportunities';
 import { useAuth0 } from '@auth0/auth0-react';
-import ProtectedRoute from './auth/protected-route';
 import Admin from './components/pages/Admin';
 
 function App() {

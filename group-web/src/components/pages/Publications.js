@@ -1,10 +1,11 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
-import { Container } from 'semantic-ui-react';
+import { Container } from '@mui/material';
 import '../../App.css';
 import Footer from '../footer';
 import Cards from '../PublicationCards';
-import { PublicationList } from './PublicationList';
+import ChildAccordionPublication from './ChildAccordionPublication';
+
 
 function Publications() {
   const [Publication, setPublication] = useState([]);
@@ -19,9 +20,15 @@ function Publications() {
     return (
         <>
         <Cards />
-        <Container style={{ marginLeft: 40 }}>
-            <PublicationList children={Publication}/>
-        </Container>  
+        <Container>
+        {Publication.map(publication =>{
+            return (<>
+              <ChildAccordionPublication child={publication}/>
+            </>)
+          })}
+        </Container>
+           
+          
         <Footer />
         </>           
       );

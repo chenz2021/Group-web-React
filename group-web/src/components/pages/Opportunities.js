@@ -1,22 +1,49 @@
 import React, { useEffect, useState } from "react";
+import { Button } from "semantic-ui-react";
 import "../../App.css";
 import Footer from "../footer";
-import SimpleAccordion from "./Accordion";
+import ChildAccordion from "./ChildAccordion";
 
-function Opportunities() {
+export default function Opportunities() {
+  const [positions, setPositions] = useState([]);
+  useEffect(() => {
+    fetch("http://localhost:5000/opportunities").then(response =>
+      response.json().then(data => {  
+        setPositions(data.Opportunity);
+      })
+        );
+    },[]);
+
+  // const showPosition = () => {
+  //     console.log(positions)
+  //     if (!positions) {
+  //     return  (
+  //       <h3>No new positions, come back later</h3> 
+  //       )               
+  //     } else {
+  //         positions.map(
+  //           position => {
+  //             return (
+  //               <>
+  //                 <ChildAccordion child={position}/>
+  //               </>
+  //             )     
+  //           }
+  //         )        
+  //   }  
+  //   }
   
-
   return (
     <>
-      <div className="cards">
-        
+      <div className="cards">  
         <h1>Opportunities</h1>
-        
         <div className='cards__container'>
-          <div className='cards__wrapper'>
-            <div>
-              <SimpleAccordion/>
-            </div>
+          <div className='cards__wrapper'>  
+          {positions.map(position =>{
+            return (<>
+              <ChildAccordion child={position}/>
+            </>)
+          })} 
           </div>
         </div>
       </div>
@@ -24,5 +51,3 @@ function Opportunities() {
     </>  
   );
 }
-
-export default Opportunities;

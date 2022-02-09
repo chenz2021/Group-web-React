@@ -1,10 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { Button_c } from './Button';
 import { Link } from 'react-router-dom';
 import './Navbar.css';
 import AuthenticationButton from './authentication-button';
-import Login from './Login';
-import Logout from './Logout';
+
 
 function Navbar() {
   const [click, setClick] = useState(false);
