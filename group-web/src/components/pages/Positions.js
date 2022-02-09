@@ -1,7 +1,6 @@
 import React from "react";
 import { List, Container } from "semantic-ui-react";
 import '../../App.css';
-import axios from 'axios';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { faDeleteLeft } from "@fortawesome/free-solid-svg-icons";

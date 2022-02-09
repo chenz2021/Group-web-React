@@ -34,7 +34,9 @@ const Admin = () => {
     return (
     <>
       <div className="cards">
-        <h1>Add new publications here!</h1>
+      <div className='cards__container'>
+          <div className='cards__wrapper'>
+        <h1>Add new publications below!</h1>
         <Container style={{ marginLeft: 80 }}>
             <PublicationForm
                 onNewPublication={publication =>
@@ -46,10 +48,9 @@ const Admin = () => {
             </Container>
         </Container>
         
-        <h1>Add new openings here!</h1>
+        <h1>Add new openings below!</h1>
       
-        <div className='cards__container'>
-          <div className='cards__wrapper'>
+        
           <PositionForm
             onNewPosition={position =>
               setPositions(currentPositions => [...currentPositions, position])
