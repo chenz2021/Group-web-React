@@ -1,11 +1,5 @@
-.People {
-    padding: 4rem;
-    /* background-image: url('../../public/images/People.jpg');
-    background-position: center;
-    background-size: fill;
-    background-repeat: no-repeat; */
-    
-    
+  .People {
+    padding: 4rem;       
 }
 
 
@@ -14,14 +8,14 @@
     text-align: center;
   }
   
-.bio {
-  display: flex;
+  .bio {
+  /* display: flex; */
   flex-direction: column;
   width: 50%;
   text-align: justify;
 }
 
-.read-more {
+  .read-more {
   display: flex;
   width: 20%;
   font-size: small;

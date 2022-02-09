@@ -7,11 +7,13 @@ import { library } from "@fortawesome/fontawesome-svg-core";
 import { faDeleteLeft } from "@fortawesome/free-solid-svg-icons";
 import { confirmAlert } from 'react-confirm-alert';
 import 'react-confirm-alert/src/react-confirm-alert.css'; // Import css
+import { useAuth0 } from '@auth0/auth0-react';
 
 library.add(faDeleteLeft);
 
-export const Positions = ({ positions }) => {
 
+export const Positions = ({ positions }) => {
+  const { getAccessTokenSilently } = useAuth0();
   function handleDelete(id) {
     confirmAlert({
       title: 'Delete your post',
@@ -19,24 +21,30 @@ export const Positions = ({ positions }) => {
       buttons: [
         {
           label: 'Yes, delete',
-          onClick: () => {
-            axios.delete(`http://localhost:5000/opportunities/${id}`)
-            .then(res => {
-              console.log(res.data)
-            }).catch(err => {
-              console.warn(err.warn)
+          onClick: async () => {
+            const token = await getAccessTokenSilently();
+            const response = await fetch("http://localhost:5000/opportunities/" + id, {
+              method: "DELETE",
+              headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${token}`
+              },
+              
             });
-          }
-        },
-        {
-          label: 'Cancel',
-          // onClick: () => alert('cancelled')
-        }
-      ]
-    });
 
-    
-  };
+            if (response.ok) {
+              console.log("response worked!");
+              return response.message
+            }
+        }
+      },
+      {
+        label: 'Cancel',
+        // onClick: () => alert('cancelled')
+      }
+    ]
+  });
+}
 
   return (
     <Container style={{ marginTop: 40 }}>

@@ -5,6 +5,7 @@ import 'react-confirm-alert/src/react-confirm-alert.css'; // Import css
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { faCheckSquare } from "@fortawesome/free-solid-svg-icons";
+import { useAuth0 } from '@auth0/auth0-react';
 
 library.add(faCheckSquare);
 
@@ -15,6 +16,7 @@ export const PublicationForm = ({ onNewPublication }) => {
     const [publisher, setPublisher] = useState("");
     const [link, setLink] = useState("");
     const [cover, setCover] = useState("");
+    const { getAccessTokenSilently } = useAuth0();
 
     function handleSubmit() {
       confirmAlert({
@@ -24,12 +26,13 @@ export const PublicationForm = ({ onNewPublication }) => {
           {
             label: 'Yes, submit',
             onClick: async () => {
+                const token = await getAccessTokenSilently();
                 const publication = { title, author, year, publisher, link, cover };
-                console.log(publication)
                 const response = await fetch("http://localhost:5000/publications", {
                   method: "POST",
                   headers: {
-                    "Content-Type": "application/json"
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${token}`
                   },
                   body: JSON.stringify(publication)
                 });

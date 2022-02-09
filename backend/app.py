@@ -138,7 +138,7 @@ def get_publications():
 
 @app.route("/publications/<id>", methods=['DELETE'])
 @requires_auth('delete:publications')
-def delete_publication(id):
+def delete_publication(jwt, id):
     try:
         publication = Publication.query.filter\
             (Publication.id == id).one_or_none()
@@ -164,7 +164,7 @@ def delete_publication(id):
 
 @app.route('/publications', methods=['POST'])
 @requires_auth('post:publications')
-def add_publication():
+def add_publication(jwt):
     body = request.get_json()
     title = body.get('title', '')
     year = body.get('year', '')

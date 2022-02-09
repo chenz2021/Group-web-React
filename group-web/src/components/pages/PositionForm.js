@@ -24,7 +24,7 @@ export const PositionForm = ({ onNewPosition }) => {
             onClick: async () => {
                 const token = await getAccessTokenSilently();
                 const position = { title, description };
-                console.log(token)
+                
                 const response = await fetch("http://localhost:5000/opportunities", {
                   method: "POST",
                   headers: {
