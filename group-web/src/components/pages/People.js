@@ -1,12 +1,13 @@
 import React from 'react';
 import EmployeeCardList from "../EmployeeCardList";
 import Footer from "../footer";
-import BackToTop from '../BackToTop';
+import Scroll from '../Scroll';
+
 
 function People() {
   return (
     <>
-    <BackToTop/>
+      <Scroll showBelow={250}/>
         <EmployeeCardList/>
         <Footer />
     </>

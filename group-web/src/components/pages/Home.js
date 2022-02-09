@@ -3,12 +3,12 @@ import '../../App.css'
 import HeroSection from '../HeroSection'
 import Cards from '../Cards';
 import Footer from '../footer';
-import BackToTop from '../BackToTop';
+import Scroll from '../Scroll';
 
 function Home () {
     return (
         <>
-        <BackToTop/>
+        <Scroll showBelow={250}/>
           <HeroSection />
           <Cards />
           <Footer />

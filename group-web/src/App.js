@@ -9,6 +9,7 @@ import Publications from './components/pages/Publications';
 import Opportunities from './components/pages/Opportunities';
 import { useAuth0 } from '@auth0/auth0-react';
 import Admin from './components/pages/Admin';
+import Navbar from './components/Navbar'
 
 function App() {
   const { isLoading } = useAuth0();
@@ -19,6 +20,7 @@ function App() {
 
   return (
     <>
+    <Navbar/>
           <Routes>
             <Route path='/' element={<Home />} />
             <Route path='/people' element={<People />} />

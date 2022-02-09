@@ -8,7 +8,7 @@ import { PublicationForm } from "./PublicationForm";
 import { PublicationList } from "./PublicationList";
 import { withAuthenticationRequired } from '@auth0/auth0-react';
 import Loading from '../Loading';
-import BackToTop from '../BackToTop';
+import Scroll from '../Scroll';
 
     
 const Admin = () => {
@@ -33,7 +33,7 @@ const Admin = () => {
 
     return (
     <>
-    <BackToTop/>
+    <Scroll showBelow={250}  />
       <div className="cards">
         <div className='cards__container'>
           <div className='cards__wrapper'>

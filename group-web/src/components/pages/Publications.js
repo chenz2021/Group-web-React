@@ -5,7 +5,7 @@ import '../../App.css';
 import Footer from '../footer';
 import Cards from '../PublicationCards';
 import ChildAccordionPublication from './ChildAccordionPublication';
-import BackToTop from '../BackToTop';
+import Scroll from '../Scroll';
 
 
 function Publications() {
@@ -20,8 +20,8 @@ function Publications() {
   }, []);
     return (
         <>
-        <BackToTop>  
-        </BackToTop>
+        
+        <Scroll showBelow={250} />
         <Cards />
         <Container>    
         {Publication.map(publication =>{

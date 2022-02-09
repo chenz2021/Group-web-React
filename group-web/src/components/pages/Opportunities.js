@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import "../../App.css";
 import Footer from "../footer";
 import ChildAccordion from "./ChildAccordion";
-import BackToTop from '../BackToTop';
+import Scroll from "../Scroll";
 
 export default function Opportunities() {
   const [positions, setPositions] = useState([]);
@@ -35,7 +35,7 @@ export default function Opportunities() {
   
   return (
     <>
-    <BackToTop/>
+      <Scroll showBelow={250}/>
       <div className="cards">  
         <h1>Opportunities</h1>
         <div className='cards__container'>
