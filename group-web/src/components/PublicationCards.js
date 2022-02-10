@@ -91,7 +91,7 @@ function Cards() {
 
         </div>
       </div>
-      <h2>Selective Publications</h2>
+      <h2>Selected Publications</h2>
     </div>
   );
 }

@@ -66,7 +66,7 @@ const Admin = () => {
   );
 }
     
-    
+   
 export default withAuthenticationRequired(Admin, {
       onRedirecting: () => <Loading />,
     });

@@ -11,9 +11,13 @@ library.add(faCheckSquare);
 export const PositionForm = ({ onNewPosition }) => {
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
+    const [errorMessage, setErrorMessage] = useState(false)
     const { getAccessTokenSilently } = useAuth0();
 
-    function handleSubmit() {
+
+    function handleSubmit(e) {
+      e.preventDefault();
+      
       confirmAlert({
         title: 'Submit your post',
         message: 'Are you sure?',
@@ -31,6 +35,8 @@ export const PositionForm = ({ onNewPosition }) => {
                     Authorization: `Bearer ${token}`
                   },
                   body: JSON.stringify(position)
+                }).catch(() => {
+                  setErrorMessage(true)
                 });
     
                 if (response.ok) {
@@ -38,7 +44,8 @@ export const PositionForm = ({ onNewPosition }) => {
                   onNewPosition(position);
                   setTitle("");
                   setDescription("");
-                }
+                }      
+                
             }
           },
           {
@@ -52,6 +59,7 @@ export const PositionForm = ({ onNewPosition }) => {
     return (
         <Form >
           <Form.Field>
+          
           <textarea 
           rows={6}
           placeholder="Job Description"
@@ -64,15 +72,28 @@ export const PositionForm = ({ onNewPosition }) => {
               value={title}
               onChange={e => setTitle(e.target.value)}
             />
+            
           </Form.Field>
           <Form.Field>
             
             <Button
               onClick={handleSubmit}
             >
+              
               submit
             </Button>
+            
+          </Form.Field>
+          <Form.Field>
+            {errorMessage && (
+               confirmAlert({
+                title: 'Not Authorized',
+                message: 'Please log in',})
+                
+              
+            )}
           </Form.Field>
         </Form>
+        
       );
     }
