@@ -13,25 +13,6 @@ export default function Opportunities() {
       })
         );
     },[]);
-
-  // const showPosition = () => {
-  //     console.log(positions)
-  //     if (!positions) {
-  //     return  (
-  //       <h3>No new positions, come back later</h3> 
-  //       )               
-  //     } else {
-  //         positions.map(
-  //           position => {
-  //             return (
-  //               <>
-  //                 <ChildAccordion child={position}/>
-  //               </>
-  //             )     
-  //           }
-  //         )        
-  //   }  
-  //   }
   
   return (
     <>

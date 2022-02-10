@@ -16,14 +16,14 @@ function Cards() {
               src='images/cs9b05289_0008.jpg.gif'
               text='Water formation reaction under confinement' 
               label='ACS Catalysis'
-              path='/'
+              path='/publications'
               onClick={event =>  window.location.href='https://pubs.acs.org/doi/10.1021/acscatal.9b05289'}              
             />
             <CardItem
               src='images/Small.jpg'
               text = 'Xe trapping in silicate nanocages'
               label='Small'
-              path='/'
+              path='/publications'
               onClick={event =>  window.location.href='https://onlinelibrary.wiley.com/doi/10.1002/smll.202103661'} 
             />
           </ul>
@@ -33,7 +33,7 @@ function Cards() {
               src='images/Nature Comm.jpg'
               text='Immobilization of single argon atoms in nanocages of 2D zeolite'
               label='Nature Communication'
-              path='/'
+              path='/publications'
               onClick={event =>  window.location.href='https://onlinelibrary.wiley.com/doi/10.1002/smll.202103661'} 
             />
             
@@ -41,7 +41,7 @@ function Cards() {
               src='images/review.jpg'
               text='Topical review: Chemistry in confined space'
               label='Journal of Physics: Condensed Matter'
-              path='/' 
+              path='/publications' 
               onClick={event =>  window.location.href='https://tbrnewsmedia.com/bnls-boscoboinik-unlocks-structural-secrets-boiling-stone/'} 
             />
             
@@ -56,14 +56,14 @@ function Cards() {
               src='images/cs9b05289_0008.jpg.gif'
               text='Water formation reaction under confinement' 
               label='ACS Catalysis'
-              path='/'
+              path='/publications'
               onClick={event =>  window.location.href='https://pubs.acs.org/doi/10.1021/acscatal.9b05289'}              
             />
             <CardItem
               src='images/Small.jpg'
               text = 'Xe trapping in silicate nanocages'
               label='Small'
-              path='/'
+              path='/publications'
               onClick={event =>  window.location.href='https://onlinelibrary.wiley.com/doi/10.1002/smll.202103661'} 
             />
           </ul>
@@ -73,7 +73,7 @@ function Cards() {
               src='images/Nature Comm.jpg'
               text='Immobilization of single argon atoms in nanocages of 2D zeolite'
               label='Nature Communication'
-              path='/'
+              path='/publications'
               onClick={event =>  window.location.href='https://onlinelibrary.wiley.com/doi/10.1002/smll.202103661'} 
             />
             
@@ -81,7 +81,7 @@ function Cards() {
               src='images/review.jpg'
               text='Topical review: Chemistry in confined space'
               label='Journal of Physics: Condensed Matter'
-              path='/' 
+              path='/publications' 
               onClick={event =>  window.location.href='https://tbrnewsmedia.com/bnls-boscoboinik-unlocks-structural-secrets-boiling-stone/'} 
             />
             

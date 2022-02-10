@@ -16,7 +16,7 @@ function EmployeeCardList () {
               src='images/Anibal.jpg'
               text='J. Anibal Boscoboinik' 
               label='Group Leader'
-              path='/'
+              path='/people'
               onClick={event =>  window.location.href='https://www.bnl.gov/staff/jboscoboinik'}              
             />
             <div className="bio">
@@ -44,20 +44,20 @@ function EmployeeCardList () {
               src='images/Image from iOS (1).jpg'
               text='After a couple of beers'
               label='Life'
-              path='/services'
+              path='/people'
             />
             <EmployeeCard
               src='images/Small.jpg'
               text = 'Xe trapping in silicate nanocages'
               label='Research'
-              path='/'
+              path='/people'
               onClick={event =>  window.location.href='https://onlinelibrary.wiley.com/doi/10.1002/smll.202103661'} 
             />
             <EmployeeCard
               src='images/img-8.jpg'
               text='Ride through the Sahara Desert on a guided camel tour'
               label='Adrenaline'
-              path='/sign-up'  
+              path='/people'  
             />
             
             
