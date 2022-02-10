@@ -23,7 +23,7 @@ function Publications() {
         
         <Scroll showBelow={250} />
         <Cards />
-        <Container>    
+        <Container style={{ marginBottom: 40 }}>    
         {Publication.map(publication =>{
             return (<>
               <ChildAccordionPublication child={publication}/>
