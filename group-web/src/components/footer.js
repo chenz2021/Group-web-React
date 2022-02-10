@@ -48,7 +48,7 @@ function Footer() {
         <div class='social-media-wrap'>
           <div class='footer-logo'>
             <Link to='/' className='social-logo'>
-              CFN@BNL
+              J. Anibal's Group
             </Link>
             
           </div>

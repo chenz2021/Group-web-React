@@ -30,7 +30,7 @@ function Navbar() {
       <nav className='navbar'>
         <div className='navbar-container'>
           <Link to='/' className='navbar-logo' onClick={closeMobileMenu}>
-            CFN
+            J. Anibal's
             <i class="fas fa-rocket" />
           </Link>
           

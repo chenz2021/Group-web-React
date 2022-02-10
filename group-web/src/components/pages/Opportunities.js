@@ -20,7 +20,9 @@ export default function Opportunities() {
       <div className="cards">  
         <h1>Opportunities</h1>
         <div className='cards__container'>
+          
           <div className='cards__wrapper'>  
+          <h2>If nothing shows up, check out later!</h2><br></br>
           {positions.map(position =>{
             return (<>
               <ChildAccordion child={position}/>

@@ -7,7 +7,6 @@ import Cards from '../PublicationCards';
 import ChildAccordionPublication from './ChildAccordionPublication';
 import Scroll from '../Scroll';
 
-
 function Publications() {
   const [Publication, setPublication] = useState([]);
 
@@ -18,9 +17,9 @@ function Publications() {
       })
     );
   }, []);
+
     return (
         <>
-        
         <Scroll showBelow={250} />
         <Cards />
         <Container style={{ marginBottom: 40 }}>    

@@ -21,7 +21,7 @@ const Admin = () => {
             setPublication(data.publications);
           })
         );
-      },[]);
+      },[Publication]);
         
     useEffect(() => {
         fetch("http://localhost:5000/opportunities").then(response =>
@@ -29,7 +29,7 @@ const Admin = () => {
             setPositions(data.Opportunity);
         })
         );
-    },[]);
+    },[positions]);
 
     return (
     <>

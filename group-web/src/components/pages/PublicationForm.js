@@ -14,7 +14,6 @@ export const PublicationForm = ({ onNewPublication }) => {
     const [year, setYear] = useState("");
     const [publisher, setPublisher] = useState("");
     const [link, setLink] = useState("");
-    const [cover, setCover] = useState("");
     const { getAccessTokenSilently } = useAuth0();
 
     function handleSubmit() {
@@ -26,7 +25,7 @@ export const PublicationForm = ({ onNewPublication }) => {
             label: 'Yes, submit',
             onClick: async () => {
                 const token = await getAccessTokenSilently();
-                const publication = { title, author, year, publisher, link, cover };
+                const publication = { title, author, year, publisher, link};
                 const response = await fetch("http://localhost:5000/publications", {
                   method: "POST",
                   headers: {
@@ -44,7 +43,6 @@ export const PublicationForm = ({ onNewPublication }) => {
                   setYear("");
                   setPublisher("");
                   setLink("");
-                  setCover("")
                 }
             }
           },
@@ -90,13 +88,6 @@ export const PublicationForm = ({ onNewPublication }) => {
               placeholder="Link"
               value={link}
               onChange={e => setLink(e.target.value)}
-            />
-          </Form.Field>
-          <Form.Field>
-            <Input
-              placeholder="Cover article?"
-              value={cover}
-              onChange={e => setCover(e.target.value)}
             />
           </Form.Field>
           <Form.Field>
