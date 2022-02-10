@@ -1,6 +1,8 @@
 import React from 'react';
 import './footer.css';
 import { Link } from 'react-router-dom';
+import YouTubeIcon from '@mui/icons-material/YouTube';
+import TwitterIcon from '@mui/icons-material/Twitter';
 
 function Footer() {
   return (
@@ -17,7 +19,7 @@ function Footer() {
               <Link to='/admin'>Admin Login</Link>
             </div>
           </div>
-          <div className='footer-link-wrapper'>
+          {/* <div className='footer-link-wrapper'>
           <div class='footer-link-items'>
             <h2>Facilities</h2>
             
@@ -27,19 +29,22 @@ function Footer() {
               <a target="_blank" href="https://www.bnl.gov/cfn/facilities/nanofabrication.php">Nanofabrication</a>
               <a target="_blank" href="https://www.bnl.gov/cfn/facilities/theory.php/">Theory & Computation</a>
             </div>
-          </div>
+          </div> */}
 
         <div className='footer-link-wrapper'>
           <div class='footer-link-items'>
             <h2>Videos</h2>
             <Link to='/'>Life in Long Island</Link>
+            <Link to='/'>Life is fun!</Link>
+            <Link to='/'>Research is super fun!</Link>
+            <Link to='/'>I'm out of words!</Link>
 
           </div>
           <div class='footer-link-items'>
             <h2>Follow Us!</h2>
             {/* <Link to='/'>Facebook</Link> */}
-            <Link to='/'>Youtube</Link>
-            <Link to='/'>Twitter</Link>
+            <Link to='/'>Youtube<YouTubeIcon/></Link>
+            <Link to='/'>Twitter<TwitterIcon/></Link>
           </div>
         </div>
       </div>
@@ -53,6 +58,7 @@ function Footer() {
             
           </div>
           <div class='social-icons'>
+          <h3 className='footer-note'>Follow BNL@</h3>
             <Link
               class='social-icon-link facebook'
               to={{pathname:"//www.facebook.com/BrookhavenLab/" }}

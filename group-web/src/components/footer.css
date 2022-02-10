@@ -7,7 +7,9 @@
     align-items: center;
   }
   
-
+ .footer-note {
+   color: #fff;
+ }
   
   a:focus, a:hover {
     border-bottom: 2px solid;
@@ -123,7 +125,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 240px;
+    width: 400px;
   }
   
   .social-logo {
