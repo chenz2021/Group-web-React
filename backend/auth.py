@@ -10,7 +10,7 @@ AUTH0_DOMAIN = 'dev-0-47ey18.us.auth0.com'
 ALGORITHMS = ['RS256']
 API_AUDIENCE = 'group'
 
-logging.basicConfig(filename='theater_error.log', level=logging.INFO,
+logging.basicConfig(filename='web_error.log', level=logging.INFO,
                     format='%(asctime)s %(levelname)s: %(message)s')
 
 
