@@ -15,8 +15,10 @@ export const PublicationForm = ({ onNewPublication }) => {
     const [publisher, setPublisher] = useState("");
     const [link, setLink] = useState("");
     const { getAccessTokenSilently } = useAuth0();
-
-    function handleSubmit() {
+    const [errorMessage, setErrorMessage] = useState(false)
+    
+    function handleSubmit(e) {
+      e.preventDefault();
       confirmAlert({
         title: 'Submit your post',
         message: 'Are you sure?',
@@ -33,7 +35,9 @@ export const PublicationForm = ({ onNewPublication }) => {
                     Authorization: `Bearer ${token}`
                   },
                   body: JSON.stringify(publication)
-                });
+                }).catch(() => {
+                  setErrorMessage(true)
+                });;
     
                 if (response.ok) {
                   console.log("response worked!");
@@ -96,6 +100,14 @@ export const PublicationForm = ({ onNewPublication }) => {
             >
               submit
             </Button>
+          </Form.Field>
+          <Form.Field>
+            {errorMessage && (
+               confirmAlert({
+                title: 'Not Authorized',
+                message: 'Please log in',})
+              
+            )}
           </Form.Field>
         </Form>
       );

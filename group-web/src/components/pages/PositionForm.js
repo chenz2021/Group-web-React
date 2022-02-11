@@ -15,9 +15,8 @@ export const PositionForm = ({ onNewPosition }) => {
     const { getAccessTokenSilently } = useAuth0();
 
 
-    function handleSubmit(e) {
-      e.preventDefault();
-      
+    function handleSubmit(e) {  
+      e.preventDefault()  
       confirmAlert({
         title: 'Submit your post',
         message: 'Are you sure?',
@@ -58,8 +57,7 @@ export const PositionForm = ({ onNewPosition }) => {
 
     return (
         <Form >
-          <Form.Field>
-          
+          <Form.Field> 
           <textarea 
           rows={6}
           placeholder="Job Description"
@@ -71,25 +69,20 @@ export const PositionForm = ({ onNewPosition }) => {
               placeholder="Title"
               value={title}
               onChange={e => setTitle(e.target.value)}
-            />
-            
+            />     
           </Form.Field>
-          <Form.Field>
-            
+          <Form.Field>       
             <Button
               onClick={handleSubmit}
-            >
-              
+            >             
               submit
             </Button>
-            
           </Form.Field>
           <Form.Field>
             {errorMessage && (
                confirmAlert({
                 title: 'Not Authorized',
                 message: 'Please log in',})
-                
               
             )}
           </Form.Field>
