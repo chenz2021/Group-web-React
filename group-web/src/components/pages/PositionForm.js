@@ -60,13 +60,13 @@ export const PositionForm = ({ onNewPosition }) => {
           <Form.Field> 
           <textarea 
           rows={6}
-          placeholder="Job Description"
+          placeholder="Enter Job Description Here"
               value={description}
               onChange={e => setDescription(e.target.value)}></textarea>
           </Form.Field>
           <Form.Field>
             <Input
-              placeholder="Title"
+              placeholder="Enter Job Title Here"
               value={title}
               onChange={e => setTitle(e.target.value)}
             />     

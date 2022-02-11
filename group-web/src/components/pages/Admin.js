@@ -37,8 +37,9 @@ const Admin = () => {
       <div className="cards">
         <div className='cards__container'>
           <div className='cards__wrapper'>
+          
           <h1>Add new publications below!</h1>
-          <Container style={{ marginLeft: 80 }}>
+          <Container style={{ marginLeft: 90 }}>
               <PublicationForm
                   onNewPublication={publication =>
                     setPublication(currentPublication => [...currentPublication, publication])
@@ -47,17 +48,21 @@ const Admin = () => {
               <Container style={{ marginLeft: 40 }}>
                 <PublicationList children={Publication}/>
               </Container>
-          </Container>
           
+            </Container>
           <h1>Add new openings below!</h1>
-            <PositionForm
+          <Container style={{ marginLeft: 90 }}>
+          <PositionForm
               onNewPosition={position =>
                 setPositions(currentPositions => [...currentPositions, position])
               }
               />
-              <div>
+          </Container>
+            
+               <Container style={{ marginLeft: 40 }}>
                 <Positions positions={positions}/>
-              </div>
+                </Container>
+              
           </div>
         </div>
       </div>
