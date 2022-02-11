@@ -7,11 +7,11 @@ from flask_migrate import Migrate
 from datetime import datetime, date, timezone
 
 
-DB_HOST = os.getenv('DB_HOST', '127.0.0.1:5432')
-DB_USER = os.getenv('DB_USER', 'postgres')
-DB_PASSWORD = os.getenv('DB_PASSWORD', '1')
-DB_NAME = os.getenv('DB_NAME', 'group_web')
-DB_PATH = 'postgresql+psycopg2://{}:{}@{}/{}'.format(DB_USER, DB_PASSWORD, DB_HOST, DB_NAME)
+# DB_HOST = os.getenv('DB_HOST', '127.0.0.1:5432')
+# DB_USER = os.getenv('DB_USER', 'postgres')
+# DB_PASSWORD = os.getenv('DB_PASSWORD', '1')
+# DB_NAME = os.getenv('DB_NAME', 'group_web')
+DB_PATH = 'postgres://pbykuocuctfbvf:4061695d0cbb5797cbe044ff57871cb1e76859c1ce403f03fe96cb1b40bc747e@ec2-34-194-171-47.compute-1.amazonaws.com:5432/d1oqd1dt4bmkds'
 
 
 db = SQLAlchemy()
