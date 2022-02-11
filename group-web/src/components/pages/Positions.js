@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import { List, Container } from "semantic-ui-react";
 import '../../App.css';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -10,8 +10,8 @@ import { useAuth0 } from '@auth0/auth0-react';
 
 library.add(faDeleteLeft);
 
-
 export const Positions = ({ positions }) => {
+  const [errorMessage, setErrorMessage] = useState(false)
   const { getAccessTokenSilently } = useAuth0();
   function handleDelete(id) {
     confirmAlert({
@@ -29,11 +29,12 @@ export const Positions = ({ positions }) => {
                 Authorization: `Bearer ${token}`
               },
               
+            }).catch(() => {
+              setErrorMessage(true)
             });
 
             if (response.ok) {
               console.log("response worked!");
-              return response.message
             }
         }
       },
@@ -56,7 +57,12 @@ export const Positions = ({ positions }) => {
           </List.Item>      
         );   
       })}
-    
+    {errorMessage && (
+               confirmAlert({
+                title: 'Not Authorized',
+                message: 'Please log in',})
+              
+            )}
     </List>
     </Container>
     

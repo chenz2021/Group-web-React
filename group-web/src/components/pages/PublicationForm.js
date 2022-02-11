@@ -37,7 +37,7 @@ export const PublicationForm = ({ onNewPublication }) => {
                   body: JSON.stringify(publication)
                 }).catch(() => {
                   setErrorMessage(true)
-                });;
+                });
     
                 if (response.ok) {
                   console.log("response worked!");

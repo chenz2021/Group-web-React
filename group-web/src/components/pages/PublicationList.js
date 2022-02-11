@@ -7,6 +7,7 @@ import { faDeleteLeft } from "@fortawesome/free-solid-svg-icons";
 import { confirmAlert } from 'react-confirm-alert';
 import 'react-confirm-alert/src/react-confirm-alert.css'; // Import css
 import { useAuth0 } from '@auth0/auth0-react';
+import { useState } from "react";
 
 
 library.add(faDeleteLeft);
@@ -14,6 +15,7 @@ library.add(faDeleteLeft);
 
 export const PublicationList = ({ children }) => {
   const { getAccessTokenSilently } = useAuth0();
+  const [errorMessage, setErrorMessage] = useState(false)
 
   function handleDelete(id) {
     confirmAlert({
@@ -31,7 +33,9 @@ export const PublicationList = ({ children }) => {
                   Authorization: `Bearer ${token}`
                 },
                 
-              });
+              }).catch(() => {
+                setErrorMessage(true)
+              });;
   
               if (response.ok) {
                 console.log("response worked!");
@@ -61,6 +65,13 @@ export const PublicationList = ({ children }) => {
         );   
       })}
     
+            {errorMessage && (
+               confirmAlert({
+                title: 'Not Authorized',
+                message: 'Please log in',})
+              
+            )}
+          
     </List>
     </Container>
     
