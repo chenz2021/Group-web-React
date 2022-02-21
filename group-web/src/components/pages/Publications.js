@@ -28,9 +28,7 @@ function Publications() {
               <ChildAccordionPublication child={publication}/>
             </>)
           })}
-          
         </Container>
-        
         <Footer />
         </>           
       );

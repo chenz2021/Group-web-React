@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { Button_c } from './Button';
 import { Link } from 'react-router-dom';
 import './Navbar.css';
 import AuthenticationButton from './authentication-button';
@@ -30,7 +29,7 @@ function Navbar() {
       <nav className='navbar'>
         <div className='navbar-container'>
           <Link to='/' className='navbar-logo' onClick={closeMobileMenu}>
-            J. Anibal's
+            J. Anibal
             <i class="fas fa-rocket" />
           </Link>
           

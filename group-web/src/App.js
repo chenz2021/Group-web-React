@@ -27,6 +27,7 @@ function App() {
             <Route path='/publications' element={<Publications />} />
             <Route path='/opportunities' element={<Opportunities />} />  
             <Route path='/admin' element={<Admin/>}/>
+            <Route path='*' element={<h1>404 not found. Check your typing</h1>} />
             
           </Routes>      
       

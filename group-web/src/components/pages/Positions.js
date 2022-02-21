@@ -32,15 +32,10 @@ export const Positions = ({ positions }) => {
             }).catch(() => {
               setErrorMessage(true)
             });
-
-            if (response.ok) {
-              console.log("response worked!");
-            }
         }
       },
       {
         label: 'Cancel',
-        // onClick: () => alert('cancelled')
       }
     ]
   });

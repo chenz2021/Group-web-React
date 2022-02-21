@@ -67,6 +67,24 @@ def get_position():
         'Opportunity': data
     })
 
+@app.route('/admin/opportunities', methods = ['GET'])
+@requires_auth('post:opportunities')
+def get_position_admin(jwt):
+    openings = Opportunity.query.order_by(Opportunity.id).all()
+    data = []
+    for opening in openings:
+        temp_data = {
+            'id': opening.id,
+            'title': opening.title,
+            'description': opening.description,
+            'posted_at': opening.posted_at
+        }
+        data.append(temp_data)
+    return jsonify({
+        'success': True,
+        'Opportunity': data
+    })
+
 @app.route('/opportunities', methods = ['POST'])
 @requires_auth('post:opportunities')
 def create_position(jwt):
@@ -127,6 +145,18 @@ def search_opportunity():
 
 @app.route('/publications', methods=['GET'])
 def get_publications():
+    selection = Publication.query.order_by(Publication.id).all()
+    paginated_publication = paginate_publication(request, selection)
+    if len(paginated_publication) == 0:
+        abort(404)
+    return jsonify({
+        'success': True,
+        'publications': paginated_publication
+    })
+
+@app.route('/admin/publications', methods=['GET'])
+@requires_auth('post:publications')
+def get_publications_admin(jwt):
     selection = Publication.query.order_by(Publication.id).all()
     paginated_publication = paginate_publication(request, selection)
     if len(paginated_publication) == 0:

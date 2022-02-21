@@ -9,9 +9,7 @@ import 'react-confirm-alert/src/react-confirm-alert.css'; // Import css
 import { useAuth0 } from '@auth0/auth0-react';
 import { useState } from "react";
 
-
 library.add(faDeleteLeft);
-
 
 export const PublicationList = ({ children }) => {
   const { getAccessTokenSilently } = useAuth0();
@@ -35,17 +33,11 @@ export const PublicationList = ({ children }) => {
                 
               }).catch(() => {
                 setErrorMessage(true)
-              });;
-  
-              if (response.ok) {
-                console.log("response worked!");
-                return response.message
-              }
+              });
           }
         },
         {
           label: 'Cancel',
-          // onClick: () => alert('cancelled')
         }
       ]
     });
